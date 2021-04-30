@@ -16,6 +16,9 @@ microcontroller, so if you put keys into that circuit you can make a real keyboa
 Some years ago I have read at a forum from this guy who was asking $500 bucks for implementing the PS/2 routine.
 So there it is. For free.
 
+Of course there are many sources that I´ve read to get to this point. They are (I hope almost of them) in the source code,
+as well charts, pdfs, tables etc.
+
 You can watch a demonstration at youtube https://www.youtube.com/watch?v=TApKBsTthDQ&t=3s
 
 Disclaimer
