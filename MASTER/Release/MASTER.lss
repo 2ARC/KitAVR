@@ -1,0 +1,1796 @@
+
+MASTER.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000dca  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000e1e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000e1e  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000e50  2**2
+                  CONTENTS, READONLY
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	8e d4       	rcall	.+2332   	; 0x950 <main>
+  34:	c8 c6       	rjmp	.+3472   	; 0xdc6 <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <enviaByte>:
+  38:	21 e0       	ldi	r18, 0x01	; 1
+  3a:	30 e0       	ldi	r19, 0x00	; 0
+  3c:	98 2f       	mov	r25, r24
+  3e:	90 74       	andi	r25, 0x40	; 64
+  40:	48 2f       	mov	r20, r24
+  42:	40 72       	andi	r20, 0x20	; 32
+  44:	58 2f       	mov	r21, r24
+  46:	50 71       	andi	r21, 0x10	; 16
+  48:	68 2f       	mov	r22, r24
+  4a:	68 70       	andi	r22, 0x08	; 8
+  4c:	78 2f       	mov	r23, r24
+  4e:	74 70       	andi	r23, 0x04	; 4
+  50:	e8 2f       	mov	r30, r24
+  52:	e2 70       	andi	r30, 0x02	; 2
+  54:	f8 2f       	mov	r31, r24
+  56:	f1 70       	andi	r31, 0x01	; 1
+  58:	21 30       	cpi	r18, 0x01	; 1
+  5a:	31 05       	cpc	r19, r1
+  5c:	39 f0       	breq	.+14     	; 0x6c <__SREG__+0x2d>
+  5e:	22 30       	cpi	r18, 0x02	; 2
+  60:	31 05       	cpc	r19, r1
+  62:	31 f4       	brne	.+12     	; 0x70 <__SREG__+0x31>
+  64:	ff 23       	and	r31, r31
+  66:	11 f0       	breq	.+4      	; 0x6c <__SREG__+0x2d>
+  68:	c7 9a       	sbi	0x18, 7	; 24
+  6a:	1a c0       	rjmp	.+52     	; 0xa0 <__SREG__+0x61>
+  6c:	c7 98       	cbi	0x18, 7	; 24
+  6e:	18 c0       	rjmp	.+48     	; 0xa0 <__SREG__+0x61>
+  70:	23 30       	cpi	r18, 0x03	; 3
+  72:	31 05       	cpc	r19, r1
+  74:	31 f4       	brne	.+12     	; 0x82 <__SREG__+0x43>
+  76:	ee 23       	and	r30, r30
+  78:	11 f0       	breq	.+4      	; 0x7e <__SREG__+0x3f>
+  7a:	c7 9a       	sbi	0x18, 7	; 24
+  7c:	18 c0       	rjmp	.+48     	; 0xae <__SREG__+0x6f>
+  7e:	c7 98       	cbi	0x18, 7	; 24
+  80:	16 c0       	rjmp	.+44     	; 0xae <__SREG__+0x6f>
+  82:	24 30       	cpi	r18, 0x04	; 4
+  84:	31 05       	cpc	r19, r1
+  86:	31 f4       	brne	.+12     	; 0x94 <__SREG__+0x55>
+  88:	77 23       	and	r23, r23
+  8a:	11 f0       	breq	.+4      	; 0x90 <__SREG__+0x51>
+  8c:	c7 9a       	sbi	0x18, 7	; 24
+  8e:	12 c0       	rjmp	.+36     	; 0xb4 <__SREG__+0x75>
+  90:	c7 98       	cbi	0x18, 7	; 24
+  92:	10 c0       	rjmp	.+32     	; 0xb4 <__SREG__+0x75>
+  94:	25 30       	cpi	r18, 0x05	; 5
+  96:	31 05       	cpc	r19, r1
+  98:	19 f4       	brne	.+6      	; 0xa0 <__SREG__+0x61>
+  9a:	66 23       	and	r22, r22
+  9c:	99 f0       	breq	.+38     	; 0xc4 <__SREG__+0x85>
+  9e:	05 c0       	rjmp	.+10     	; 0xaa <__SREG__+0x6b>
+  a0:	26 30       	cpi	r18, 0x06	; 6
+  a2:	31 05       	cpc	r19, r1
+  a4:	21 f4       	brne	.+8      	; 0xae <__SREG__+0x6f>
+  a6:	55 23       	and	r21, r21
+  a8:	69 f0       	breq	.+26     	; 0xc4 <__SREG__+0x85>
+  aa:	c7 9a       	sbi	0x18, 7	; 24
+  ac:	0c c0       	rjmp	.+24     	; 0xc6 <__SREG__+0x87>
+  ae:	27 30       	cpi	r18, 0x07	; 7
+  b0:	31 05       	cpc	r19, r1
+  b2:	f1 f0       	breq	.+60     	; 0xf0 <__SREG__+0xb1>
+  b4:	28 30       	cpi	r18, 0x08	; 8
+  b6:	31 05       	cpc	r19, r1
+  b8:	f1 f0       	breq	.+60     	; 0xf6 <__SREG__+0xb7>
+  ba:	29 30       	cpi	r18, 0x09	; 9
+  bc:	31 05       	cpc	r19, r1
+  be:	19 f4       	brne	.+6      	; 0xc6 <__SREG__+0x87>
+  c0:	87 fd       	sbrc	r24, 7
+  c2:	f3 cf       	rjmp	.-26     	; 0xaa <__SREG__+0x6b>
+  c4:	c7 98       	cbi	0x18, 7	; 24
+  c6:	d9 01       	movw	r26, r18
+  c8:	1a 97       	sbiw	r26, 0x0a	; 10
+  ca:	12 97       	sbiw	r26, 0x02	; 2
+  cc:	08 f4       	brcc	.+2      	; 0xd0 <__SREG__+0x91>
+  ce:	c7 9a       	sbi	0x18, 7	; 24
+  d0:	c6 98       	cbi	0x18, 6	; 24
+  d2:	a9 e1       	ldi	r26, 0x19	; 25
+  d4:	aa 95       	dec	r26
+  d6:	f1 f7       	brne	.-4      	; 0xd4 <__SREG__+0x95>
+  d8:	c6 9a       	sbi	0x18, 6	; 24
+  da:	a8 e0       	ldi	r26, 0x08	; 8
+  dc:	aa 95       	dec	r26
+  de:	f1 f7       	brne	.-4      	; 0xdc <__SREG__+0x9d>
+  e0:	00 00       	nop
+  e2:	2f 5f       	subi	r18, 0xFF	; 255
+  e4:	3f 4f       	sbci	r19, 0xFF	; 255
+  e6:	2c 30       	cpi	r18, 0x0C	; 12
+  e8:	31 05       	cpc	r19, r1
+  ea:	09 f0       	breq	.+2      	; 0xee <__SREG__+0xaf>
+  ec:	b5 cf       	rjmp	.-150    	; 0x58 <__SREG__+0x19>
+  ee:	08 95       	ret
+  f0:	44 23       	and	r20, r20
+  f2:	19 f0       	breq	.+6      	; 0xfa <__SREG__+0xbb>
+  f4:	ec cf       	rjmp	.-40     	; 0xce <__SREG__+0x8f>
+  f6:	91 11       	cpse	r25, r1
+  f8:	ea cf       	rjmp	.-44     	; 0xce <__SREG__+0x8f>
+  fa:	c7 98       	cbi	0x18, 7	; 24
+  fc:	e9 cf       	rjmp	.-46     	; 0xd0 <__SREG__+0x91>
+
+000000fe <ligaDesligaNaSequencia>:
+  fe:	84 e4       	ldi	r24, 0x44	; 68
+ 100:	9b df       	rcall	.-202    	; 0x38 <enviaByte>
+ 102:	87 ea       	ldi	r24, 0xA7	; 167
+ 104:	91 e6       	ldi	r25, 0x61	; 97
+ 106:	01 97       	sbiw	r24, 0x01	; 1
+ 108:	f1 f7       	brne	.-4      	; 0x106 <ligaDesligaNaSequencia+0x8>
+ 10a:	00 c0       	rjmp	.+0      	; 0x10c <ligaDesligaNaSequencia+0xe>
+ 10c:	00 00       	nop
+ 10e:	8c e3       	ldi	r24, 0x3C	; 60
+ 110:	93 df       	rcall	.-218    	; 0x38 <enviaByte>
+ 112:	87 ea       	ldi	r24, 0xA7	; 167
+ 114:	91 e6       	ldi	r25, 0x61	; 97
+ 116:	01 97       	sbiw	r24, 0x01	; 1
+ 118:	f1 f7       	brne	.-4      	; 0x116 <ligaDesligaNaSequencia+0x18>
+ 11a:	00 c0       	rjmp	.+0      	; 0x11c <ligaDesligaNaSequencia+0x1e>
+ 11c:	00 00       	nop
+ 11e:	8c e2       	ldi	r24, 0x2C	; 44
+ 120:	8b df       	rcall	.-234    	; 0x38 <enviaByte>
+ 122:	87 ea       	ldi	r24, 0xA7	; 167
+ 124:	91 e6       	ldi	r25, 0x61	; 97
+ 126:	01 97       	sbiw	r24, 0x01	; 1
+ 128:	f1 f7       	brne	.-4      	; 0x126 <ligaDesligaNaSequencia+0x28>
+ 12a:	00 c0       	rjmp	.+0      	; 0x12c <ligaDesligaNaSequencia+0x2e>
+ 12c:	00 00       	nop
+ 12e:	85 e4       	ldi	r24, 0x45	; 69
+ 130:	83 df       	rcall	.-250    	; 0x38 <enviaByte>
+ 132:	87 ea       	ldi	r24, 0xA7	; 167
+ 134:	91 e6       	ldi	r25, 0x61	; 97
+ 136:	01 97       	sbiw	r24, 0x01	; 1
+ 138:	f1 f7       	brne	.-4      	; 0x136 <ligaDesligaNaSequencia+0x38>
+ 13a:	00 c0       	rjmp	.+0      	; 0x13c <ligaDesligaNaSequencia+0x3e>
+ 13c:	00 00       	nop
+ 13e:	86 e1       	ldi	r24, 0x16	; 22
+ 140:	7b df       	rcall	.-266    	; 0x38 <enviaByte>
+ 142:	87 ea       	ldi	r24, 0xA7	; 167
+ 144:	91 e6       	ldi	r25, 0x61	; 97
+ 146:	01 97       	sbiw	r24, 0x01	; 1
+ 148:	f1 f7       	brne	.-4      	; 0x146 <ligaDesligaNaSequencia+0x48>
+ 14a:	00 c0       	rjmp	.+0      	; 0x14c <ligaDesligaNaSequencia+0x4e>
+ 14c:	00 00       	nop
+ 14e:	89 e2       	ldi	r24, 0x29	; 41
+ 150:	73 df       	rcall	.-282    	; 0x38 <enviaByte>
+ 152:	87 ea       	ldi	r24, 0xA7	; 167
+ 154:	91 e6       	ldi	r25, 0x61	; 97
+ 156:	01 97       	sbiw	r24, 0x01	; 1
+ 158:	f1 f7       	brne	.-4      	; 0x156 <ligaDesligaNaSequencia+0x58>
+ 15a:	00 c0       	rjmp	.+0      	; 0x15c <ligaDesligaNaSequencia+0x5e>
+ 15c:	00 00       	nop
+ 15e:	84 e4       	ldi	r24, 0x44	; 68
+ 160:	6b df       	rcall	.-298    	; 0x38 <enviaByte>
+ 162:	87 ea       	ldi	r24, 0xA7	; 167
+ 164:	91 e6       	ldi	r25, 0x61	; 97
+ 166:	01 97       	sbiw	r24, 0x01	; 1
+ 168:	f1 f7       	brne	.-4      	; 0x166 <ligaDesligaNaSequencia+0x68>
+ 16a:	00 c0       	rjmp	.+0      	; 0x16c <ligaDesligaNaSequencia+0x6e>
+ 16c:	00 00       	nop
+ 16e:	81 e3       	ldi	r24, 0x31	; 49
+ 170:	63 df       	rcall	.-314    	; 0x38 <enviaByte>
+ 172:	87 ea       	ldi	r24, 0xA7	; 167
+ 174:	91 e6       	ldi	r25, 0x61	; 97
+ 176:	01 97       	sbiw	r24, 0x01	; 1
+ 178:	f1 f7       	brne	.-4      	; 0x176 <ligaDesligaNaSequencia+0x78>
+ 17a:	00 c0       	rjmp	.+0      	; 0x17c <ligaDesligaNaSequencia+0x7e>
+ 17c:	00 00       	nop
+ 17e:	8a e5       	ldi	r24, 0x5A	; 90
+ 180:	5b df       	rcall	.-330    	; 0x38 <enviaByte>
+ 182:	83 e2       	ldi	r24, 0x23	; 35
+ 184:	94 ef       	ldi	r25, 0xF4	; 244
+ 186:	01 97       	sbiw	r24, 0x01	; 1
+ 188:	f1 f7       	brne	.-4      	; 0x186 <ligaDesligaNaSequencia+0x88>
+ 18a:	00 c0       	rjmp	.+0      	; 0x18c <ligaDesligaNaSequencia+0x8e>
+ 18c:	00 00       	nop
+ 18e:	84 e4       	ldi	r24, 0x44	; 68
+ 190:	53 df       	rcall	.-346    	; 0x38 <enviaByte>
+ 192:	87 ea       	ldi	r24, 0xA7	; 167
+ 194:	91 e6       	ldi	r25, 0x61	; 97
+ 196:	01 97       	sbiw	r24, 0x01	; 1
+ 198:	f1 f7       	brne	.-4      	; 0x196 <ligaDesligaNaSequencia+0x98>
+ 19a:	00 c0       	rjmp	.+0      	; 0x19c <ligaDesligaNaSequencia+0x9e>
+ 19c:	00 00       	nop
+ 19e:	8c e3       	ldi	r24, 0x3C	; 60
+ 1a0:	4b df       	rcall	.-362    	; 0x38 <enviaByte>
+ 1a2:	87 ea       	ldi	r24, 0xA7	; 167
+ 1a4:	91 e6       	ldi	r25, 0x61	; 97
+ 1a6:	01 97       	sbiw	r24, 0x01	; 1
+ 1a8:	f1 f7       	brne	.-4      	; 0x1a6 <ligaDesligaNaSequencia+0xa8>
+ 1aa:	00 c0       	rjmp	.+0      	; 0x1ac <ligaDesligaNaSequencia+0xae>
+ 1ac:	00 00       	nop
+ 1ae:	8c e2       	ldi	r24, 0x2C	; 44
+ 1b0:	43 df       	rcall	.-378    	; 0x38 <enviaByte>
+ 1b2:	87 ea       	ldi	r24, 0xA7	; 167
+ 1b4:	91 e6       	ldi	r25, 0x61	; 97
+ 1b6:	01 97       	sbiw	r24, 0x01	; 1
+ 1b8:	f1 f7       	brne	.-4      	; 0x1b6 <ligaDesligaNaSequencia+0xb8>
+ 1ba:	00 c0       	rjmp	.+0      	; 0x1bc <ligaDesligaNaSequencia+0xbe>
+ 1bc:	00 00       	nop
+ 1be:	85 e4       	ldi	r24, 0x45	; 69
+ 1c0:	3b df       	rcall	.-394    	; 0x38 <enviaByte>
+ 1c2:	87 ea       	ldi	r24, 0xA7	; 167
+ 1c4:	91 e6       	ldi	r25, 0x61	; 97
+ 1c6:	01 97       	sbiw	r24, 0x01	; 1
+ 1c8:	f1 f7       	brne	.-4      	; 0x1c6 <ligaDesligaNaSequencia+0xc8>
+ 1ca:	00 c0       	rjmp	.+0      	; 0x1cc <ligaDesligaNaSequencia+0xce>
+ 1cc:	00 00       	nop
+ 1ce:	86 e1       	ldi	r24, 0x16	; 22
+ 1d0:	33 df       	rcall	.-410    	; 0x38 <enviaByte>
+ 1d2:	87 ea       	ldi	r24, 0xA7	; 167
+ 1d4:	91 e6       	ldi	r25, 0x61	; 97
+ 1d6:	01 97       	sbiw	r24, 0x01	; 1
+ 1d8:	f1 f7       	brne	.-4      	; 0x1d6 <ligaDesligaNaSequencia+0xd8>
+ 1da:	00 c0       	rjmp	.+0      	; 0x1dc <ligaDesligaNaSequencia+0xde>
+ 1dc:	00 00       	nop
+ 1de:	89 e2       	ldi	r24, 0x29	; 41
+ 1e0:	2b df       	rcall	.-426    	; 0x38 <enviaByte>
+ 1e2:	87 ea       	ldi	r24, 0xA7	; 167
+ 1e4:	91 e6       	ldi	r25, 0x61	; 97
+ 1e6:	01 97       	sbiw	r24, 0x01	; 1
+ 1e8:	f1 f7       	brne	.-4      	; 0x1e6 <ligaDesligaNaSequencia+0xe8>
+ 1ea:	00 c0       	rjmp	.+0      	; 0x1ec <ligaDesligaNaSequencia+0xee>
+ 1ec:	00 00       	nop
+ 1ee:	84 e4       	ldi	r24, 0x44	; 68
+ 1f0:	23 df       	rcall	.-442    	; 0x38 <enviaByte>
+ 1f2:	87 ea       	ldi	r24, 0xA7	; 167
+ 1f4:	91 e6       	ldi	r25, 0x61	; 97
+ 1f6:	01 97       	sbiw	r24, 0x01	; 1
+ 1f8:	f1 f7       	brne	.-4      	; 0x1f6 <ligaDesligaNaSequencia+0xf8>
+ 1fa:	00 c0       	rjmp	.+0      	; 0x1fc <ligaDesligaNaSequencia+0xfe>
+ 1fc:	00 00       	nop
+ 1fe:	8b e2       	ldi	r24, 0x2B	; 43
+ 200:	1b df       	rcall	.-458    	; 0x38 <enviaByte>
+ 202:	87 ea       	ldi	r24, 0xA7	; 167
+ 204:	91 e6       	ldi	r25, 0x61	; 97
+ 206:	01 97       	sbiw	r24, 0x01	; 1
+ 208:	f1 f7       	brne	.-4      	; 0x206 <ligaDesligaNaSequencia+0x108>
+ 20a:	00 c0       	rjmp	.+0      	; 0x20c <ligaDesligaNaSequencia+0x10e>
+ 20c:	00 00       	nop
+ 20e:	8b e2       	ldi	r24, 0x2B	; 43
+ 210:	13 df       	rcall	.-474    	; 0x38 <enviaByte>
+ 212:	87 ea       	ldi	r24, 0xA7	; 167
+ 214:	91 e6       	ldi	r25, 0x61	; 97
+ 216:	01 97       	sbiw	r24, 0x01	; 1
+ 218:	f1 f7       	brne	.-4      	; 0x216 <ligaDesligaNaSequencia+0x118>
+ 21a:	00 c0       	rjmp	.+0      	; 0x21c <ligaDesligaNaSequencia+0x11e>
+ 21c:	00 00       	nop
+ 21e:	8a e5       	ldi	r24, 0x5A	; 90
+ 220:	0b df       	rcall	.-490    	; 0x38 <enviaByte>
+ 222:	83 e2       	ldi	r24, 0x23	; 35
+ 224:	94 ef       	ldi	r25, 0xF4	; 244
+ 226:	01 97       	sbiw	r24, 0x01	; 1
+ 228:	f1 f7       	brne	.-4      	; 0x226 <ligaDesligaNaSequencia+0x128>
+ 22a:	00 c0       	rjmp	.+0      	; 0x22c <ligaDesligaNaSequencia+0x12e>
+ 22c:	00 00       	nop
+ 22e:	84 e4       	ldi	r24, 0x44	; 68
+ 230:	03 df       	rcall	.-506    	; 0x38 <enviaByte>
+ 232:	87 ea       	ldi	r24, 0xA7	; 167
+ 234:	91 e6       	ldi	r25, 0x61	; 97
+ 236:	01 97       	sbiw	r24, 0x01	; 1
+ 238:	f1 f7       	brne	.-4      	; 0x236 <ligaDesligaNaSequencia+0x138>
+ 23a:	00 c0       	rjmp	.+0      	; 0x23c <ligaDesligaNaSequencia+0x13e>
+ 23c:	00 00       	nop
+ 23e:	8c e3       	ldi	r24, 0x3C	; 60
+ 240:	fb de       	rcall	.-522    	; 0x38 <enviaByte>
+ 242:	87 ea       	ldi	r24, 0xA7	; 167
+ 244:	91 e6       	ldi	r25, 0x61	; 97
+ 246:	01 97       	sbiw	r24, 0x01	; 1
+ 248:	f1 f7       	brne	.-4      	; 0x246 <ligaDesligaNaSequencia+0x148>
+ 24a:	00 c0       	rjmp	.+0      	; 0x24c <ligaDesligaNaSequencia+0x14e>
+ 24c:	00 00       	nop
+ 24e:	8c e2       	ldi	r24, 0x2C	; 44
+ 250:	f3 de       	rcall	.-538    	; 0x38 <enviaByte>
+ 252:	87 ea       	ldi	r24, 0xA7	; 167
+ 254:	91 e6       	ldi	r25, 0x61	; 97
+ 256:	01 97       	sbiw	r24, 0x01	; 1
+ 258:	f1 f7       	brne	.-4      	; 0x256 <ligaDesligaNaSequencia+0x158>
+ 25a:	00 c0       	rjmp	.+0      	; 0x25c <ligaDesligaNaSequencia+0x15e>
+ 25c:	00 00       	nop
+ 25e:	85 e4       	ldi	r24, 0x45	; 69
+ 260:	eb de       	rcall	.-554    	; 0x38 <enviaByte>
+ 262:	87 ea       	ldi	r24, 0xA7	; 167
+ 264:	91 e6       	ldi	r25, 0x61	; 97
+ 266:	01 97       	sbiw	r24, 0x01	; 1
+ 268:	f1 f7       	brne	.-4      	; 0x266 <ligaDesligaNaSequencia+0x168>
+ 26a:	00 c0       	rjmp	.+0      	; 0x26c <ligaDesligaNaSequencia+0x16e>
+ 26c:	00 00       	nop
+ 26e:	8e e1       	ldi	r24, 0x1E	; 30
+ 270:	e3 de       	rcall	.-570    	; 0x38 <enviaByte>
+ 272:	87 ea       	ldi	r24, 0xA7	; 167
+ 274:	91 e6       	ldi	r25, 0x61	; 97
+ 276:	01 97       	sbiw	r24, 0x01	; 1
+ 278:	f1 f7       	brne	.-4      	; 0x276 <ligaDesligaNaSequencia+0x178>
+ 27a:	00 c0       	rjmp	.+0      	; 0x27c <ligaDesligaNaSequencia+0x17e>
+ 27c:	00 00       	nop
+ 27e:	89 e2       	ldi	r24, 0x29	; 41
+ 280:	db de       	rcall	.-586    	; 0x38 <enviaByte>
+ 282:	87 ea       	ldi	r24, 0xA7	; 167
+ 284:	91 e6       	ldi	r25, 0x61	; 97
+ 286:	01 97       	sbiw	r24, 0x01	; 1
+ 288:	f1 f7       	brne	.-4      	; 0x286 <ligaDesligaNaSequencia+0x188>
+ 28a:	00 c0       	rjmp	.+0      	; 0x28c <ligaDesligaNaSequencia+0x18e>
+ 28c:	00 00       	nop
+ 28e:	84 e4       	ldi	r24, 0x44	; 68
+ 290:	d3 de       	rcall	.-602    	; 0x38 <enviaByte>
+ 292:	87 ea       	ldi	r24, 0xA7	; 167
+ 294:	91 e6       	ldi	r25, 0x61	; 97
+ 296:	01 97       	sbiw	r24, 0x01	; 1
+ 298:	f1 f7       	brne	.-4      	; 0x296 <ligaDesligaNaSequencia+0x198>
+ 29a:	00 c0       	rjmp	.+0      	; 0x29c <ligaDesligaNaSequencia+0x19e>
+ 29c:	00 00       	nop
+ 29e:	81 e3       	ldi	r24, 0x31	; 49
+ 2a0:	cb de       	rcall	.-618    	; 0x38 <enviaByte>
+ 2a2:	87 ea       	ldi	r24, 0xA7	; 167
+ 2a4:	91 e6       	ldi	r25, 0x61	; 97
+ 2a6:	01 97       	sbiw	r24, 0x01	; 1
+ 2a8:	f1 f7       	brne	.-4      	; 0x2a6 <ligaDesligaNaSequencia+0x1a8>
+ 2aa:	00 c0       	rjmp	.+0      	; 0x2ac <ligaDesligaNaSequencia+0x1ae>
+ 2ac:	00 00       	nop
+ 2ae:	8a e5       	ldi	r24, 0x5A	; 90
+ 2b0:	c3 de       	rcall	.-634    	; 0x38 <enviaByte>
+ 2b2:	83 e2       	ldi	r24, 0x23	; 35
+ 2b4:	94 ef       	ldi	r25, 0xF4	; 244
+ 2b6:	01 97       	sbiw	r24, 0x01	; 1
+ 2b8:	f1 f7       	brne	.-4      	; 0x2b6 <ligaDesligaNaSequencia+0x1b8>
+ 2ba:	00 c0       	rjmp	.+0      	; 0x2bc <ligaDesligaNaSequencia+0x1be>
+ 2bc:	00 00       	nop
+ 2be:	84 e4       	ldi	r24, 0x44	; 68
+ 2c0:	bb de       	rcall	.-650    	; 0x38 <enviaByte>
+ 2c2:	87 ea       	ldi	r24, 0xA7	; 167
+ 2c4:	91 e6       	ldi	r25, 0x61	; 97
+ 2c6:	01 97       	sbiw	r24, 0x01	; 1
+ 2c8:	f1 f7       	brne	.-4      	; 0x2c6 <ligaDesligaNaSequencia+0x1c8>
+ 2ca:	00 c0       	rjmp	.+0      	; 0x2cc <ligaDesligaNaSequencia+0x1ce>
+ 2cc:	00 00       	nop
+ 2ce:	8c e3       	ldi	r24, 0x3C	; 60
+ 2d0:	b3 de       	rcall	.-666    	; 0x38 <enviaByte>
+ 2d2:	87 ea       	ldi	r24, 0xA7	; 167
+ 2d4:	91 e6       	ldi	r25, 0x61	; 97
+ 2d6:	01 97       	sbiw	r24, 0x01	; 1
+ 2d8:	f1 f7       	brne	.-4      	; 0x2d6 <ligaDesligaNaSequencia+0x1d8>
+ 2da:	00 c0       	rjmp	.+0      	; 0x2dc <ligaDesligaNaSequencia+0x1de>
+ 2dc:	00 00       	nop
+ 2de:	8c e2       	ldi	r24, 0x2C	; 44
+ 2e0:	ab de       	rcall	.-682    	; 0x38 <enviaByte>
+ 2e2:	87 ea       	ldi	r24, 0xA7	; 167
+ 2e4:	91 e6       	ldi	r25, 0x61	; 97
+ 2e6:	01 97       	sbiw	r24, 0x01	; 1
+ 2e8:	f1 f7       	brne	.-4      	; 0x2e6 <ligaDesligaNaSequencia+0x1e8>
+ 2ea:	00 c0       	rjmp	.+0      	; 0x2ec <ligaDesligaNaSequencia+0x1ee>
+ 2ec:	00 00       	nop
+ 2ee:	85 e4       	ldi	r24, 0x45	; 69
+ 2f0:	a3 de       	rcall	.-698    	; 0x38 <enviaByte>
+ 2f2:	87 ea       	ldi	r24, 0xA7	; 167
+ 2f4:	91 e6       	ldi	r25, 0x61	; 97
+ 2f6:	01 97       	sbiw	r24, 0x01	; 1
+ 2f8:	f1 f7       	brne	.-4      	; 0x2f6 <ligaDesligaNaSequencia+0x1f8>
+ 2fa:	00 c0       	rjmp	.+0      	; 0x2fc <ligaDesligaNaSequencia+0x1fe>
+ 2fc:	00 00       	nop
+ 2fe:	8e e1       	ldi	r24, 0x1E	; 30
+ 300:	9b de       	rcall	.-714    	; 0x38 <enviaByte>
+ 302:	87 ea       	ldi	r24, 0xA7	; 167
+ 304:	91 e6       	ldi	r25, 0x61	; 97
+ 306:	01 97       	sbiw	r24, 0x01	; 1
+ 308:	f1 f7       	brne	.-4      	; 0x306 <ligaDesligaNaSequencia+0x208>
+ 30a:	00 c0       	rjmp	.+0      	; 0x30c <ligaDesligaNaSequencia+0x20e>
+ 30c:	00 00       	nop
+ 30e:	89 e2       	ldi	r24, 0x29	; 41
+ 310:	93 de       	rcall	.-730    	; 0x38 <enviaByte>
+ 312:	87 ea       	ldi	r24, 0xA7	; 167
+ 314:	91 e6       	ldi	r25, 0x61	; 97
+ 316:	01 97       	sbiw	r24, 0x01	; 1
+ 318:	f1 f7       	brne	.-4      	; 0x316 <ligaDesligaNaSequencia+0x218>
+ 31a:	00 c0       	rjmp	.+0      	; 0x31c <ligaDesligaNaSequencia+0x21e>
+ 31c:	00 00       	nop
+ 31e:	84 e4       	ldi	r24, 0x44	; 68
+ 320:	8b de       	rcall	.-746    	; 0x38 <enviaByte>
+ 322:	87 ea       	ldi	r24, 0xA7	; 167
+ 324:	91 e6       	ldi	r25, 0x61	; 97
+ 326:	01 97       	sbiw	r24, 0x01	; 1
+ 328:	f1 f7       	brne	.-4      	; 0x326 <ligaDesligaNaSequencia+0x228>
+ 32a:	00 c0       	rjmp	.+0      	; 0x32c <ligaDesligaNaSequencia+0x22e>
+ 32c:	00 00       	nop
+ 32e:	8b e2       	ldi	r24, 0x2B	; 43
+ 330:	83 de       	rcall	.-762    	; 0x38 <enviaByte>
+ 332:	87 ea       	ldi	r24, 0xA7	; 167
+ 334:	91 e6       	ldi	r25, 0x61	; 97
+ 336:	01 97       	sbiw	r24, 0x01	; 1
+ 338:	f1 f7       	brne	.-4      	; 0x336 <ligaDesligaNaSequencia+0x238>
+ 33a:	00 c0       	rjmp	.+0      	; 0x33c <ligaDesligaNaSequencia+0x23e>
+ 33c:	00 00       	nop
+ 33e:	8b e2       	ldi	r24, 0x2B	; 43
+ 340:	7b de       	rcall	.-778    	; 0x38 <enviaByte>
+ 342:	87 ea       	ldi	r24, 0xA7	; 167
+ 344:	91 e6       	ldi	r25, 0x61	; 97
+ 346:	01 97       	sbiw	r24, 0x01	; 1
+ 348:	f1 f7       	brne	.-4      	; 0x346 <ligaDesligaNaSequencia+0x248>
+ 34a:	00 c0       	rjmp	.+0      	; 0x34c <ligaDesligaNaSequencia+0x24e>
+ 34c:	00 00       	nop
+ 34e:	8a e5       	ldi	r24, 0x5A	; 90
+ 350:	73 de       	rcall	.-794    	; 0x38 <enviaByte>
+ 352:	83 e2       	ldi	r24, 0x23	; 35
+ 354:	94 ef       	ldi	r25, 0xF4	; 244
+ 356:	01 97       	sbiw	r24, 0x01	; 1
+ 358:	f1 f7       	brne	.-4      	; 0x356 <ligaDesligaNaSequencia+0x258>
+ 35a:	00 c0       	rjmp	.+0      	; 0x35c <ligaDesligaNaSequencia+0x25e>
+ 35c:	00 00       	nop
+ 35e:	84 e4       	ldi	r24, 0x44	; 68
+ 360:	6b de       	rcall	.-810    	; 0x38 <enviaByte>
+ 362:	87 ea       	ldi	r24, 0xA7	; 167
+ 364:	91 e6       	ldi	r25, 0x61	; 97
+ 366:	01 97       	sbiw	r24, 0x01	; 1
+ 368:	f1 f7       	brne	.-4      	; 0x366 <ligaDesligaNaSequencia+0x268>
+ 36a:	00 c0       	rjmp	.+0      	; 0x36c <ligaDesligaNaSequencia+0x26e>
+ 36c:	00 00       	nop
+ 36e:	8c e3       	ldi	r24, 0x3C	; 60
+ 370:	63 de       	rcall	.-826    	; 0x38 <enviaByte>
+ 372:	87 ea       	ldi	r24, 0xA7	; 167
+ 374:	91 e6       	ldi	r25, 0x61	; 97
+ 376:	01 97       	sbiw	r24, 0x01	; 1
+ 378:	f1 f7       	brne	.-4      	; 0x376 <ligaDesligaNaSequencia+0x278>
+ 37a:	00 c0       	rjmp	.+0      	; 0x37c <ligaDesligaNaSequencia+0x27e>
+ 37c:	00 00       	nop
+ 37e:	8c e2       	ldi	r24, 0x2C	; 44
+ 380:	5b de       	rcall	.-842    	; 0x38 <enviaByte>
+ 382:	87 ea       	ldi	r24, 0xA7	; 167
+ 384:	91 e6       	ldi	r25, 0x61	; 97
+ 386:	01 97       	sbiw	r24, 0x01	; 1
+ 388:	f1 f7       	brne	.-4      	; 0x386 <ligaDesligaNaSequencia+0x288>
+ 38a:	00 c0       	rjmp	.+0      	; 0x38c <ligaDesligaNaSequencia+0x28e>
+ 38c:	00 00       	nop
+ 38e:	85 e4       	ldi	r24, 0x45	; 69
+ 390:	53 de       	rcall	.-858    	; 0x38 <enviaByte>
+ 392:	87 ea       	ldi	r24, 0xA7	; 167
+ 394:	91 e6       	ldi	r25, 0x61	; 97
+ 396:	01 97       	sbiw	r24, 0x01	; 1
+ 398:	f1 f7       	brne	.-4      	; 0x396 <ligaDesligaNaSequencia+0x298>
+ 39a:	00 c0       	rjmp	.+0      	; 0x39c <ligaDesligaNaSequencia+0x29e>
+ 39c:	00 00       	nop
+ 39e:	86 e2       	ldi	r24, 0x26	; 38
+ 3a0:	4b de       	rcall	.-874    	; 0x38 <enviaByte>
+ 3a2:	87 ea       	ldi	r24, 0xA7	; 167
+ 3a4:	91 e6       	ldi	r25, 0x61	; 97
+ 3a6:	01 97       	sbiw	r24, 0x01	; 1
+ 3a8:	f1 f7       	brne	.-4      	; 0x3a6 <ligaDesligaNaSequencia+0x2a8>
+ 3aa:	00 c0       	rjmp	.+0      	; 0x3ac <ligaDesligaNaSequencia+0x2ae>
+ 3ac:	00 00       	nop
+ 3ae:	89 e2       	ldi	r24, 0x29	; 41
+ 3b0:	43 de       	rcall	.-890    	; 0x38 <enviaByte>
+ 3b2:	87 ea       	ldi	r24, 0xA7	; 167
+ 3b4:	91 e6       	ldi	r25, 0x61	; 97
+ 3b6:	01 97       	sbiw	r24, 0x01	; 1
+ 3b8:	f1 f7       	brne	.-4      	; 0x3b6 <ligaDesligaNaSequencia+0x2b8>
+ 3ba:	00 c0       	rjmp	.+0      	; 0x3bc <ligaDesligaNaSequencia+0x2be>
+ 3bc:	00 00       	nop
+ 3be:	84 e4       	ldi	r24, 0x44	; 68
+ 3c0:	3b de       	rcall	.-906    	; 0x38 <enviaByte>
+ 3c2:	87 ea       	ldi	r24, 0xA7	; 167
+ 3c4:	91 e6       	ldi	r25, 0x61	; 97
+ 3c6:	01 97       	sbiw	r24, 0x01	; 1
+ 3c8:	f1 f7       	brne	.-4      	; 0x3c6 <ligaDesligaNaSequencia+0x2c8>
+ 3ca:	00 c0       	rjmp	.+0      	; 0x3cc <ligaDesligaNaSequencia+0x2ce>
+ 3cc:	00 00       	nop
+ 3ce:	81 e3       	ldi	r24, 0x31	; 49
+ 3d0:	33 de       	rcall	.-922    	; 0x38 <enviaByte>
+ 3d2:	87 ea       	ldi	r24, 0xA7	; 167
+ 3d4:	91 e6       	ldi	r25, 0x61	; 97
+ 3d6:	01 97       	sbiw	r24, 0x01	; 1
+ 3d8:	f1 f7       	brne	.-4      	; 0x3d6 <ligaDesligaNaSequencia+0x2d8>
+ 3da:	00 c0       	rjmp	.+0      	; 0x3dc <ligaDesligaNaSequencia+0x2de>
+ 3dc:	00 00       	nop
+ 3de:	8a e5       	ldi	r24, 0x5A	; 90
+ 3e0:	2b de       	rcall	.-938    	; 0x38 <enviaByte>
+ 3e2:	83 e2       	ldi	r24, 0x23	; 35
+ 3e4:	94 ef       	ldi	r25, 0xF4	; 244
+ 3e6:	01 97       	sbiw	r24, 0x01	; 1
+ 3e8:	f1 f7       	brne	.-4      	; 0x3e6 <ligaDesligaNaSequencia+0x2e8>
+ 3ea:	00 c0       	rjmp	.+0      	; 0x3ec <ligaDesligaNaSequencia+0x2ee>
+ 3ec:	00 00       	nop
+ 3ee:	84 e4       	ldi	r24, 0x44	; 68
+ 3f0:	23 de       	rcall	.-954    	; 0x38 <enviaByte>
+ 3f2:	87 ea       	ldi	r24, 0xA7	; 167
+ 3f4:	91 e6       	ldi	r25, 0x61	; 97
+ 3f6:	01 97       	sbiw	r24, 0x01	; 1
+ 3f8:	f1 f7       	brne	.-4      	; 0x3f6 <ligaDesligaNaSequencia+0x2f8>
+ 3fa:	00 c0       	rjmp	.+0      	; 0x3fc <ligaDesligaNaSequencia+0x2fe>
+ 3fc:	00 00       	nop
+ 3fe:	8c e3       	ldi	r24, 0x3C	; 60
+ 400:	1b de       	rcall	.-970    	; 0x38 <enviaByte>
+ 402:	87 ea       	ldi	r24, 0xA7	; 167
+ 404:	91 e6       	ldi	r25, 0x61	; 97
+ 406:	01 97       	sbiw	r24, 0x01	; 1
+ 408:	f1 f7       	brne	.-4      	; 0x406 <__FUSE_REGION_LENGTH__+0x6>
+ 40a:	00 c0       	rjmp	.+0      	; 0x40c <__FUSE_REGION_LENGTH__+0xc>
+ 40c:	00 00       	nop
+ 40e:	8c e2       	ldi	r24, 0x2C	; 44
+ 410:	13 de       	rcall	.-986    	; 0x38 <enviaByte>
+ 412:	87 ea       	ldi	r24, 0xA7	; 167
+ 414:	91 e6       	ldi	r25, 0x61	; 97
+ 416:	01 97       	sbiw	r24, 0x01	; 1
+ 418:	f1 f7       	brne	.-4      	; 0x416 <__FUSE_REGION_LENGTH__+0x16>
+ 41a:	00 c0       	rjmp	.+0      	; 0x41c <__FUSE_REGION_LENGTH__+0x1c>
+ 41c:	00 00       	nop
+ 41e:	85 e4       	ldi	r24, 0x45	; 69
+ 420:	0b de       	rcall	.-1002   	; 0x38 <enviaByte>
+ 422:	87 ea       	ldi	r24, 0xA7	; 167
+ 424:	91 e6       	ldi	r25, 0x61	; 97
+ 426:	01 97       	sbiw	r24, 0x01	; 1
+ 428:	f1 f7       	brne	.-4      	; 0x426 <__FUSE_REGION_LENGTH__+0x26>
+ 42a:	00 c0       	rjmp	.+0      	; 0x42c <__FUSE_REGION_LENGTH__+0x2c>
+ 42c:	00 00       	nop
+ 42e:	86 e2       	ldi	r24, 0x26	; 38
+ 430:	03 de       	rcall	.-1018   	; 0x38 <enviaByte>
+ 432:	87 ea       	ldi	r24, 0xA7	; 167
+ 434:	91 e6       	ldi	r25, 0x61	; 97
+ 436:	01 97       	sbiw	r24, 0x01	; 1
+ 438:	f1 f7       	brne	.-4      	; 0x436 <__FUSE_REGION_LENGTH__+0x36>
+ 43a:	00 c0       	rjmp	.+0      	; 0x43c <__FUSE_REGION_LENGTH__+0x3c>
+ 43c:	00 00       	nop
+ 43e:	89 e2       	ldi	r24, 0x29	; 41
+ 440:	fb dd       	rcall	.-1034   	; 0x38 <enviaByte>
+ 442:	87 ea       	ldi	r24, 0xA7	; 167
+ 444:	91 e6       	ldi	r25, 0x61	; 97
+ 446:	01 97       	sbiw	r24, 0x01	; 1
+ 448:	f1 f7       	brne	.-4      	; 0x446 <__FUSE_REGION_LENGTH__+0x46>
+ 44a:	00 c0       	rjmp	.+0      	; 0x44c <__FUSE_REGION_LENGTH__+0x4c>
+ 44c:	00 00       	nop
+ 44e:	84 e4       	ldi	r24, 0x44	; 68
+ 450:	f3 dd       	rcall	.-1050   	; 0x38 <enviaByte>
+ 452:	87 ea       	ldi	r24, 0xA7	; 167
+ 454:	91 e6       	ldi	r25, 0x61	; 97
+ 456:	01 97       	sbiw	r24, 0x01	; 1
+ 458:	f1 f7       	brne	.-4      	; 0x456 <__FUSE_REGION_LENGTH__+0x56>
+ 45a:	00 c0       	rjmp	.+0      	; 0x45c <__FUSE_REGION_LENGTH__+0x5c>
+ 45c:	00 00       	nop
+ 45e:	8b e2       	ldi	r24, 0x2B	; 43
+ 460:	eb dd       	rcall	.-1066   	; 0x38 <enviaByte>
+ 462:	87 ea       	ldi	r24, 0xA7	; 167
+ 464:	91 e6       	ldi	r25, 0x61	; 97
+ 466:	01 97       	sbiw	r24, 0x01	; 1
+ 468:	f1 f7       	brne	.-4      	; 0x466 <__stack+0x7>
+ 46a:	00 c0       	rjmp	.+0      	; 0x46c <__stack+0xd>
+ 46c:	00 00       	nop
+ 46e:	8b e2       	ldi	r24, 0x2B	; 43
+ 470:	e3 dd       	rcall	.-1082   	; 0x38 <enviaByte>
+ 472:	87 ea       	ldi	r24, 0xA7	; 167
+ 474:	91 e6       	ldi	r25, 0x61	; 97
+ 476:	01 97       	sbiw	r24, 0x01	; 1
+ 478:	f1 f7       	brne	.-4      	; 0x476 <__stack+0x17>
+ 47a:	00 c0       	rjmp	.+0      	; 0x47c <__stack+0x1d>
+ 47c:	00 00       	nop
+ 47e:	8a e5       	ldi	r24, 0x5A	; 90
+ 480:	db dd       	rcall	.-1098   	; 0x38 <enviaByte>
+ 482:	83 e2       	ldi	r24, 0x23	; 35
+ 484:	94 ef       	ldi	r25, 0xF4	; 244
+ 486:	01 97       	sbiw	r24, 0x01	; 1
+ 488:	f1 f7       	brne	.-4      	; 0x486 <__stack+0x27>
+ 48a:	00 c0       	rjmp	.+0      	; 0x48c <__stack+0x2d>
+ 48c:	00 00       	nop
+ 48e:	84 e4       	ldi	r24, 0x44	; 68
+ 490:	d3 dd       	rcall	.-1114   	; 0x38 <enviaByte>
+ 492:	87 ea       	ldi	r24, 0xA7	; 167
+ 494:	91 e6       	ldi	r25, 0x61	; 97
+ 496:	01 97       	sbiw	r24, 0x01	; 1
+ 498:	f1 f7       	brne	.-4      	; 0x496 <__stack+0x37>
+ 49a:	00 c0       	rjmp	.+0      	; 0x49c <__stack+0x3d>
+ 49c:	00 00       	nop
+ 49e:	8c e3       	ldi	r24, 0x3C	; 60
+ 4a0:	cb dd       	rcall	.-1130   	; 0x38 <enviaByte>
+ 4a2:	87 ea       	ldi	r24, 0xA7	; 167
+ 4a4:	91 e6       	ldi	r25, 0x61	; 97
+ 4a6:	01 97       	sbiw	r24, 0x01	; 1
+ 4a8:	f1 f7       	brne	.-4      	; 0x4a6 <__stack+0x47>
+ 4aa:	00 c0       	rjmp	.+0      	; 0x4ac <__stack+0x4d>
+ 4ac:	00 00       	nop
+ 4ae:	8c e2       	ldi	r24, 0x2C	; 44
+ 4b0:	c3 dd       	rcall	.-1146   	; 0x38 <enviaByte>
+ 4b2:	87 ea       	ldi	r24, 0xA7	; 167
+ 4b4:	91 e6       	ldi	r25, 0x61	; 97
+ 4b6:	01 97       	sbiw	r24, 0x01	; 1
+ 4b8:	f1 f7       	brne	.-4      	; 0x4b6 <__stack+0x57>
+ 4ba:	00 c0       	rjmp	.+0      	; 0x4bc <__stack+0x5d>
+ 4bc:	00 00       	nop
+ 4be:	85 e4       	ldi	r24, 0x45	; 69
+ 4c0:	bb dd       	rcall	.-1162   	; 0x38 <enviaByte>
+ 4c2:	87 ea       	ldi	r24, 0xA7	; 167
+ 4c4:	91 e6       	ldi	r25, 0x61	; 97
+ 4c6:	01 97       	sbiw	r24, 0x01	; 1
+ 4c8:	f1 f7       	brne	.-4      	; 0x4c6 <__stack+0x67>
+ 4ca:	00 c0       	rjmp	.+0      	; 0x4cc <__stack+0x6d>
+ 4cc:	00 00       	nop
+ 4ce:	85 e2       	ldi	r24, 0x25	; 37
+ 4d0:	b3 dd       	rcall	.-1178   	; 0x38 <enviaByte>
+ 4d2:	87 ea       	ldi	r24, 0xA7	; 167
+ 4d4:	91 e6       	ldi	r25, 0x61	; 97
+ 4d6:	01 97       	sbiw	r24, 0x01	; 1
+ 4d8:	f1 f7       	brne	.-4      	; 0x4d6 <__stack+0x77>
+ 4da:	00 c0       	rjmp	.+0      	; 0x4dc <__stack+0x7d>
+ 4dc:	00 00       	nop
+ 4de:	89 e2       	ldi	r24, 0x29	; 41
+ 4e0:	ab dd       	rcall	.-1194   	; 0x38 <enviaByte>
+ 4e2:	87 ea       	ldi	r24, 0xA7	; 167
+ 4e4:	91 e6       	ldi	r25, 0x61	; 97
+ 4e6:	01 97       	sbiw	r24, 0x01	; 1
+ 4e8:	f1 f7       	brne	.-4      	; 0x4e6 <__stack+0x87>
+ 4ea:	00 c0       	rjmp	.+0      	; 0x4ec <__stack+0x8d>
+ 4ec:	00 00       	nop
+ 4ee:	84 e4       	ldi	r24, 0x44	; 68
+ 4f0:	a3 dd       	rcall	.-1210   	; 0x38 <enviaByte>
+ 4f2:	87 ea       	ldi	r24, 0xA7	; 167
+ 4f4:	91 e6       	ldi	r25, 0x61	; 97
+ 4f6:	01 97       	sbiw	r24, 0x01	; 1
+ 4f8:	f1 f7       	brne	.-4      	; 0x4f6 <__stack+0x97>
+ 4fa:	00 c0       	rjmp	.+0      	; 0x4fc <__stack+0x9d>
+ 4fc:	00 00       	nop
+ 4fe:	81 e3       	ldi	r24, 0x31	; 49
+ 500:	9b dd       	rcall	.-1226   	; 0x38 <enviaByte>
+ 502:	87 ea       	ldi	r24, 0xA7	; 167
+ 504:	91 e6       	ldi	r25, 0x61	; 97
+ 506:	01 97       	sbiw	r24, 0x01	; 1
+ 508:	f1 f7       	brne	.-4      	; 0x506 <__stack+0xa7>
+ 50a:	00 c0       	rjmp	.+0      	; 0x50c <__stack+0xad>
+ 50c:	00 00       	nop
+ 50e:	8a e5       	ldi	r24, 0x5A	; 90
+ 510:	93 dd       	rcall	.-1242   	; 0x38 <enviaByte>
+ 512:	83 e2       	ldi	r24, 0x23	; 35
+ 514:	94 ef       	ldi	r25, 0xF4	; 244
+ 516:	01 97       	sbiw	r24, 0x01	; 1
+ 518:	f1 f7       	brne	.-4      	; 0x516 <__stack+0xb7>
+ 51a:	00 c0       	rjmp	.+0      	; 0x51c <__stack+0xbd>
+ 51c:	00 00       	nop
+ 51e:	84 e4       	ldi	r24, 0x44	; 68
+ 520:	8b dd       	rcall	.-1258   	; 0x38 <enviaByte>
+ 522:	87 ea       	ldi	r24, 0xA7	; 167
+ 524:	91 e6       	ldi	r25, 0x61	; 97
+ 526:	01 97       	sbiw	r24, 0x01	; 1
+ 528:	f1 f7       	brne	.-4      	; 0x526 <__stack+0xc7>
+ 52a:	00 c0       	rjmp	.+0      	; 0x52c <__stack+0xcd>
+ 52c:	00 00       	nop
+ 52e:	8c e3       	ldi	r24, 0x3C	; 60
+ 530:	83 dd       	rcall	.-1274   	; 0x38 <enviaByte>
+ 532:	87 ea       	ldi	r24, 0xA7	; 167
+ 534:	91 e6       	ldi	r25, 0x61	; 97
+ 536:	01 97       	sbiw	r24, 0x01	; 1
+ 538:	f1 f7       	brne	.-4      	; 0x536 <__stack+0xd7>
+ 53a:	00 c0       	rjmp	.+0      	; 0x53c <__stack+0xdd>
+ 53c:	00 00       	nop
+ 53e:	8c e2       	ldi	r24, 0x2C	; 44
+ 540:	7b dd       	rcall	.-1290   	; 0x38 <enviaByte>
+ 542:	87 ea       	ldi	r24, 0xA7	; 167
+ 544:	91 e6       	ldi	r25, 0x61	; 97
+ 546:	01 97       	sbiw	r24, 0x01	; 1
+ 548:	f1 f7       	brne	.-4      	; 0x546 <__stack+0xe7>
+ 54a:	00 c0       	rjmp	.+0      	; 0x54c <__stack+0xed>
+ 54c:	00 00       	nop
+ 54e:	85 e4       	ldi	r24, 0x45	; 69
+ 550:	73 dd       	rcall	.-1306   	; 0x38 <enviaByte>
+ 552:	87 ea       	ldi	r24, 0xA7	; 167
+ 554:	91 e6       	ldi	r25, 0x61	; 97
+ 556:	01 97       	sbiw	r24, 0x01	; 1
+ 558:	f1 f7       	brne	.-4      	; 0x556 <__stack+0xf7>
+ 55a:	00 c0       	rjmp	.+0      	; 0x55c <__stack+0xfd>
+ 55c:	00 00       	nop
+ 55e:	85 e2       	ldi	r24, 0x25	; 37
+ 560:	6b dd       	rcall	.-1322   	; 0x38 <enviaByte>
+ 562:	87 ea       	ldi	r24, 0xA7	; 167
+ 564:	91 e6       	ldi	r25, 0x61	; 97
+ 566:	01 97       	sbiw	r24, 0x01	; 1
+ 568:	f1 f7       	brne	.-4      	; 0x566 <__stack+0x107>
+ 56a:	00 c0       	rjmp	.+0      	; 0x56c <__stack+0x10d>
+ 56c:	00 00       	nop
+ 56e:	89 e2       	ldi	r24, 0x29	; 41
+ 570:	63 dd       	rcall	.-1338   	; 0x38 <enviaByte>
+ 572:	87 ea       	ldi	r24, 0xA7	; 167
+ 574:	91 e6       	ldi	r25, 0x61	; 97
+ 576:	01 97       	sbiw	r24, 0x01	; 1
+ 578:	f1 f7       	brne	.-4      	; 0x576 <__stack+0x117>
+ 57a:	00 c0       	rjmp	.+0      	; 0x57c <__stack+0x11d>
+ 57c:	00 00       	nop
+ 57e:	84 e4       	ldi	r24, 0x44	; 68
+ 580:	5b dd       	rcall	.-1354   	; 0x38 <enviaByte>
+ 582:	87 ea       	ldi	r24, 0xA7	; 167
+ 584:	91 e6       	ldi	r25, 0x61	; 97
+ 586:	01 97       	sbiw	r24, 0x01	; 1
+ 588:	f1 f7       	brne	.-4      	; 0x586 <__stack+0x127>
+ 58a:	00 c0       	rjmp	.+0      	; 0x58c <__stack+0x12d>
+ 58c:	00 00       	nop
+ 58e:	8b e2       	ldi	r24, 0x2B	; 43
+ 590:	53 dd       	rcall	.-1370   	; 0x38 <enviaByte>
+ 592:	87 ea       	ldi	r24, 0xA7	; 167
+ 594:	91 e6       	ldi	r25, 0x61	; 97
+ 596:	01 97       	sbiw	r24, 0x01	; 1
+ 598:	f1 f7       	brne	.-4      	; 0x596 <__stack+0x137>
+ 59a:	00 c0       	rjmp	.+0      	; 0x59c <__stack+0x13d>
+ 59c:	00 00       	nop
+ 59e:	8b e2       	ldi	r24, 0x2B	; 43
+ 5a0:	4b dd       	rcall	.-1386   	; 0x38 <enviaByte>
+ 5a2:	87 ea       	ldi	r24, 0xA7	; 167
+ 5a4:	91 e6       	ldi	r25, 0x61	; 97
+ 5a6:	01 97       	sbiw	r24, 0x01	; 1
+ 5a8:	f1 f7       	brne	.-4      	; 0x5a6 <__stack+0x147>
+ 5aa:	00 c0       	rjmp	.+0      	; 0x5ac <__stack+0x14d>
+ 5ac:	00 00       	nop
+ 5ae:	8a e5       	ldi	r24, 0x5A	; 90
+ 5b0:	43 dd       	rcall	.-1402   	; 0x38 <enviaByte>
+ 5b2:	83 e2       	ldi	r24, 0x23	; 35
+ 5b4:	94 ef       	ldi	r25, 0xF4	; 244
+ 5b6:	01 97       	sbiw	r24, 0x01	; 1
+ 5b8:	f1 f7       	brne	.-4      	; 0x5b6 <__stack+0x157>
+ 5ba:	00 c0       	rjmp	.+0      	; 0x5bc <__stack+0x15d>
+ 5bc:	00 00       	nop
+ 5be:	84 e4       	ldi	r24, 0x44	; 68
+ 5c0:	3b dd       	rcall	.-1418   	; 0x38 <enviaByte>
+ 5c2:	87 ea       	ldi	r24, 0xA7	; 167
+ 5c4:	91 e6       	ldi	r25, 0x61	; 97
+ 5c6:	01 97       	sbiw	r24, 0x01	; 1
+ 5c8:	f1 f7       	brne	.-4      	; 0x5c6 <__stack+0x167>
+ 5ca:	00 c0       	rjmp	.+0      	; 0x5cc <__stack+0x16d>
+ 5cc:	00 00       	nop
+ 5ce:	8c e3       	ldi	r24, 0x3C	; 60
+ 5d0:	33 dd       	rcall	.-1434   	; 0x38 <enviaByte>
+ 5d2:	87 ea       	ldi	r24, 0xA7	; 167
+ 5d4:	91 e6       	ldi	r25, 0x61	; 97
+ 5d6:	01 97       	sbiw	r24, 0x01	; 1
+ 5d8:	f1 f7       	brne	.-4      	; 0x5d6 <__stack+0x177>
+ 5da:	00 c0       	rjmp	.+0      	; 0x5dc <__stack+0x17d>
+ 5dc:	00 00       	nop
+ 5de:	8c e2       	ldi	r24, 0x2C	; 44
+ 5e0:	2b dd       	rcall	.-1450   	; 0x38 <enviaByte>
+ 5e2:	87 ea       	ldi	r24, 0xA7	; 167
+ 5e4:	91 e6       	ldi	r25, 0x61	; 97
+ 5e6:	01 97       	sbiw	r24, 0x01	; 1
+ 5e8:	f1 f7       	brne	.-4      	; 0x5e6 <__stack+0x187>
+ 5ea:	00 c0       	rjmp	.+0      	; 0x5ec <__stack+0x18d>
+ 5ec:	00 00       	nop
+ 5ee:	85 e4       	ldi	r24, 0x45	; 69
+ 5f0:	23 dd       	rcall	.-1466   	; 0x38 <enviaByte>
+ 5f2:	87 ea       	ldi	r24, 0xA7	; 167
+ 5f4:	91 e6       	ldi	r25, 0x61	; 97
+ 5f6:	01 97       	sbiw	r24, 0x01	; 1
+ 5f8:	f1 f7       	brne	.-4      	; 0x5f6 <__stack+0x197>
+ 5fa:	00 c0       	rjmp	.+0      	; 0x5fc <__stack+0x19d>
+ 5fc:	00 00       	nop
+ 5fe:	8e e2       	ldi	r24, 0x2E	; 46
+ 600:	1b dd       	rcall	.-1482   	; 0x38 <enviaByte>
+ 602:	87 ea       	ldi	r24, 0xA7	; 167
+ 604:	91 e6       	ldi	r25, 0x61	; 97
+ 606:	01 97       	sbiw	r24, 0x01	; 1
+ 608:	f1 f7       	brne	.-4      	; 0x606 <__stack+0x1a7>
+ 60a:	00 c0       	rjmp	.+0      	; 0x60c <__stack+0x1ad>
+ 60c:	00 00       	nop
+ 60e:	89 e2       	ldi	r24, 0x29	; 41
+ 610:	13 dd       	rcall	.-1498   	; 0x38 <enviaByte>
+ 612:	87 ea       	ldi	r24, 0xA7	; 167
+ 614:	91 e6       	ldi	r25, 0x61	; 97
+ 616:	01 97       	sbiw	r24, 0x01	; 1
+ 618:	f1 f7       	brne	.-4      	; 0x616 <__stack+0x1b7>
+ 61a:	00 c0       	rjmp	.+0      	; 0x61c <__stack+0x1bd>
+ 61c:	00 00       	nop
+ 61e:	84 e4       	ldi	r24, 0x44	; 68
+ 620:	0b dd       	rcall	.-1514   	; 0x38 <enviaByte>
+ 622:	87 ea       	ldi	r24, 0xA7	; 167
+ 624:	91 e6       	ldi	r25, 0x61	; 97
+ 626:	01 97       	sbiw	r24, 0x01	; 1
+ 628:	f1 f7       	brne	.-4      	; 0x626 <__stack+0x1c7>
+ 62a:	00 c0       	rjmp	.+0      	; 0x62c <__stack+0x1cd>
+ 62c:	00 00       	nop
+ 62e:	81 e3       	ldi	r24, 0x31	; 49
+ 630:	03 dd       	rcall	.-1530   	; 0x38 <enviaByte>
+ 632:	87 ea       	ldi	r24, 0xA7	; 167
+ 634:	91 e6       	ldi	r25, 0x61	; 97
+ 636:	01 97       	sbiw	r24, 0x01	; 1
+ 638:	f1 f7       	brne	.-4      	; 0x636 <__stack+0x1d7>
+ 63a:	00 c0       	rjmp	.+0      	; 0x63c <__stack+0x1dd>
+ 63c:	00 00       	nop
+ 63e:	8a e5       	ldi	r24, 0x5A	; 90
+ 640:	fb dc       	rcall	.-1546   	; 0x38 <enviaByte>
+ 642:	83 e2       	ldi	r24, 0x23	; 35
+ 644:	94 ef       	ldi	r25, 0xF4	; 244
+ 646:	01 97       	sbiw	r24, 0x01	; 1
+ 648:	f1 f7       	brne	.-4      	; 0x646 <__stack+0x1e7>
+ 64a:	00 c0       	rjmp	.+0      	; 0x64c <__stack+0x1ed>
+ 64c:	00 00       	nop
+ 64e:	84 e4       	ldi	r24, 0x44	; 68
+ 650:	f3 dc       	rcall	.-1562   	; 0x38 <enviaByte>
+ 652:	87 ea       	ldi	r24, 0xA7	; 167
+ 654:	91 e6       	ldi	r25, 0x61	; 97
+ 656:	01 97       	sbiw	r24, 0x01	; 1
+ 658:	f1 f7       	brne	.-4      	; 0x656 <__stack+0x1f7>
+ 65a:	00 c0       	rjmp	.+0      	; 0x65c <__stack+0x1fd>
+ 65c:	00 00       	nop
+ 65e:	8c e3       	ldi	r24, 0x3C	; 60
+ 660:	eb dc       	rcall	.-1578   	; 0x38 <enviaByte>
+ 662:	87 ea       	ldi	r24, 0xA7	; 167
+ 664:	91 e6       	ldi	r25, 0x61	; 97
+ 666:	01 97       	sbiw	r24, 0x01	; 1
+ 668:	f1 f7       	brne	.-4      	; 0x666 <__stack+0x207>
+ 66a:	00 c0       	rjmp	.+0      	; 0x66c <__stack+0x20d>
+ 66c:	00 00       	nop
+ 66e:	8c e2       	ldi	r24, 0x2C	; 44
+ 670:	e3 dc       	rcall	.-1594   	; 0x38 <enviaByte>
+ 672:	87 ea       	ldi	r24, 0xA7	; 167
+ 674:	91 e6       	ldi	r25, 0x61	; 97
+ 676:	01 97       	sbiw	r24, 0x01	; 1
+ 678:	f1 f7       	brne	.-4      	; 0x676 <__stack+0x217>
+ 67a:	00 c0       	rjmp	.+0      	; 0x67c <__stack+0x21d>
+ 67c:	00 00       	nop
+ 67e:	85 e4       	ldi	r24, 0x45	; 69
+ 680:	db dc       	rcall	.-1610   	; 0x38 <enviaByte>
+ 682:	87 ea       	ldi	r24, 0xA7	; 167
+ 684:	91 e6       	ldi	r25, 0x61	; 97
+ 686:	01 97       	sbiw	r24, 0x01	; 1
+ 688:	f1 f7       	brne	.-4      	; 0x686 <__stack+0x227>
+ 68a:	00 c0       	rjmp	.+0      	; 0x68c <__stack+0x22d>
+ 68c:	00 00       	nop
+ 68e:	8e e2       	ldi	r24, 0x2E	; 46
+ 690:	d3 dc       	rcall	.-1626   	; 0x38 <enviaByte>
+ 692:	87 ea       	ldi	r24, 0xA7	; 167
+ 694:	91 e6       	ldi	r25, 0x61	; 97
+ 696:	01 97       	sbiw	r24, 0x01	; 1
+ 698:	f1 f7       	brne	.-4      	; 0x696 <__stack+0x237>
+ 69a:	00 c0       	rjmp	.+0      	; 0x69c <__stack+0x23d>
+ 69c:	00 00       	nop
+ 69e:	89 e2       	ldi	r24, 0x29	; 41
+ 6a0:	cb dc       	rcall	.-1642   	; 0x38 <enviaByte>
+ 6a2:	87 ea       	ldi	r24, 0xA7	; 167
+ 6a4:	91 e6       	ldi	r25, 0x61	; 97
+ 6a6:	01 97       	sbiw	r24, 0x01	; 1
+ 6a8:	f1 f7       	brne	.-4      	; 0x6a6 <__stack+0x247>
+ 6aa:	00 c0       	rjmp	.+0      	; 0x6ac <__stack+0x24d>
+ 6ac:	00 00       	nop
+ 6ae:	84 e4       	ldi	r24, 0x44	; 68
+ 6b0:	c3 dc       	rcall	.-1658   	; 0x38 <enviaByte>
+ 6b2:	87 ea       	ldi	r24, 0xA7	; 167
+ 6b4:	91 e6       	ldi	r25, 0x61	; 97
+ 6b6:	01 97       	sbiw	r24, 0x01	; 1
+ 6b8:	f1 f7       	brne	.-4      	; 0x6b6 <__stack+0x257>
+ 6ba:	00 c0       	rjmp	.+0      	; 0x6bc <__stack+0x25d>
+ 6bc:	00 00       	nop
+ 6be:	8b e2       	ldi	r24, 0x2B	; 43
+ 6c0:	bb dc       	rcall	.-1674   	; 0x38 <enviaByte>
+ 6c2:	87 ea       	ldi	r24, 0xA7	; 167
+ 6c4:	91 e6       	ldi	r25, 0x61	; 97
+ 6c6:	01 97       	sbiw	r24, 0x01	; 1
+ 6c8:	f1 f7       	brne	.-4      	; 0x6c6 <__stack+0x267>
+ 6ca:	00 c0       	rjmp	.+0      	; 0x6cc <__stack+0x26d>
+ 6cc:	00 00       	nop
+ 6ce:	8b e2       	ldi	r24, 0x2B	; 43
+ 6d0:	b3 dc       	rcall	.-1690   	; 0x38 <enviaByte>
+ 6d2:	87 ea       	ldi	r24, 0xA7	; 167
+ 6d4:	91 e6       	ldi	r25, 0x61	; 97
+ 6d6:	01 97       	sbiw	r24, 0x01	; 1
+ 6d8:	f1 f7       	brne	.-4      	; 0x6d6 <__stack+0x277>
+ 6da:	00 c0       	rjmp	.+0      	; 0x6dc <__stack+0x27d>
+ 6dc:	00 00       	nop
+ 6de:	8a e5       	ldi	r24, 0x5A	; 90
+ 6e0:	ab dc       	rcall	.-1706   	; 0x38 <enviaByte>
+ 6e2:	83 e2       	ldi	r24, 0x23	; 35
+ 6e4:	94 ef       	ldi	r25, 0xF4	; 244
+ 6e6:	01 97       	sbiw	r24, 0x01	; 1
+ 6e8:	f1 f7       	brne	.-4      	; 0x6e6 <__stack+0x287>
+ 6ea:	00 c0       	rjmp	.+0      	; 0x6ec <__stack+0x28d>
+ 6ec:	00 00       	nop
+ 6ee:	84 e4       	ldi	r24, 0x44	; 68
+ 6f0:	a3 dc       	rcall	.-1722   	; 0x38 <enviaByte>
+ 6f2:	87 ea       	ldi	r24, 0xA7	; 167
+ 6f4:	91 e6       	ldi	r25, 0x61	; 97
+ 6f6:	01 97       	sbiw	r24, 0x01	; 1
+ 6f8:	f1 f7       	brne	.-4      	; 0x6f6 <__stack+0x297>
+ 6fa:	00 c0       	rjmp	.+0      	; 0x6fc <__stack+0x29d>
+ 6fc:	00 00       	nop
+ 6fe:	8c e3       	ldi	r24, 0x3C	; 60
+ 700:	9b dc       	rcall	.-1738   	; 0x38 <enviaByte>
+ 702:	87 ea       	ldi	r24, 0xA7	; 167
+ 704:	91 e6       	ldi	r25, 0x61	; 97
+ 706:	01 97       	sbiw	r24, 0x01	; 1
+ 708:	f1 f7       	brne	.-4      	; 0x706 <__stack+0x2a7>
+ 70a:	00 c0       	rjmp	.+0      	; 0x70c <__stack+0x2ad>
+ 70c:	00 00       	nop
+ 70e:	8c e2       	ldi	r24, 0x2C	; 44
+ 710:	93 dc       	rcall	.-1754   	; 0x38 <enviaByte>
+ 712:	87 ea       	ldi	r24, 0xA7	; 167
+ 714:	91 e6       	ldi	r25, 0x61	; 97
+ 716:	01 97       	sbiw	r24, 0x01	; 1
+ 718:	f1 f7       	brne	.-4      	; 0x716 <__stack+0x2b7>
+ 71a:	00 c0       	rjmp	.+0      	; 0x71c <__stack+0x2bd>
+ 71c:	00 00       	nop
+ 71e:	85 e4       	ldi	r24, 0x45	; 69
+ 720:	8b dc       	rcall	.-1770   	; 0x38 <enviaByte>
+ 722:	87 ea       	ldi	r24, 0xA7	; 167
+ 724:	91 e6       	ldi	r25, 0x61	; 97
+ 726:	01 97       	sbiw	r24, 0x01	; 1
+ 728:	f1 f7       	brne	.-4      	; 0x726 <__stack+0x2c7>
+ 72a:	00 c0       	rjmp	.+0      	; 0x72c <__stack+0x2cd>
+ 72c:	00 00       	nop
+ 72e:	86 e3       	ldi	r24, 0x36	; 54
+ 730:	83 dc       	rcall	.-1786   	; 0x38 <enviaByte>
+ 732:	87 ea       	ldi	r24, 0xA7	; 167
+ 734:	91 e6       	ldi	r25, 0x61	; 97
+ 736:	01 97       	sbiw	r24, 0x01	; 1
+ 738:	f1 f7       	brne	.-4      	; 0x736 <__stack+0x2d7>
+ 73a:	00 c0       	rjmp	.+0      	; 0x73c <__stack+0x2dd>
+ 73c:	00 00       	nop
+ 73e:	89 e2       	ldi	r24, 0x29	; 41
+ 740:	7b dc       	rcall	.-1802   	; 0x38 <enviaByte>
+ 742:	87 ea       	ldi	r24, 0xA7	; 167
+ 744:	91 e6       	ldi	r25, 0x61	; 97
+ 746:	01 97       	sbiw	r24, 0x01	; 1
+ 748:	f1 f7       	brne	.-4      	; 0x746 <__stack+0x2e7>
+ 74a:	00 c0       	rjmp	.+0      	; 0x74c <__stack+0x2ed>
+ 74c:	00 00       	nop
+ 74e:	84 e4       	ldi	r24, 0x44	; 68
+ 750:	73 dc       	rcall	.-1818   	; 0x38 <enviaByte>
+ 752:	87 ea       	ldi	r24, 0xA7	; 167
+ 754:	91 e6       	ldi	r25, 0x61	; 97
+ 756:	01 97       	sbiw	r24, 0x01	; 1
+ 758:	f1 f7       	brne	.-4      	; 0x756 <__stack+0x2f7>
+ 75a:	00 c0       	rjmp	.+0      	; 0x75c <__stack+0x2fd>
+ 75c:	00 00       	nop
+ 75e:	81 e3       	ldi	r24, 0x31	; 49
+ 760:	6b dc       	rcall	.-1834   	; 0x38 <enviaByte>
+ 762:	87 ea       	ldi	r24, 0xA7	; 167
+ 764:	91 e6       	ldi	r25, 0x61	; 97
+ 766:	01 97       	sbiw	r24, 0x01	; 1
+ 768:	f1 f7       	brne	.-4      	; 0x766 <__stack+0x307>
+ 76a:	00 c0       	rjmp	.+0      	; 0x76c <__stack+0x30d>
+ 76c:	00 00       	nop
+ 76e:	8a e5       	ldi	r24, 0x5A	; 90
+ 770:	63 dc       	rcall	.-1850   	; 0x38 <enviaByte>
+ 772:	83 e2       	ldi	r24, 0x23	; 35
+ 774:	94 ef       	ldi	r25, 0xF4	; 244
+ 776:	01 97       	sbiw	r24, 0x01	; 1
+ 778:	f1 f7       	brne	.-4      	; 0x776 <__stack+0x317>
+ 77a:	00 c0       	rjmp	.+0      	; 0x77c <__stack+0x31d>
+ 77c:	00 00       	nop
+ 77e:	84 e4       	ldi	r24, 0x44	; 68
+ 780:	5b dc       	rcall	.-1866   	; 0x38 <enviaByte>
+ 782:	87 ea       	ldi	r24, 0xA7	; 167
+ 784:	91 e6       	ldi	r25, 0x61	; 97
+ 786:	01 97       	sbiw	r24, 0x01	; 1
+ 788:	f1 f7       	brne	.-4      	; 0x786 <__stack+0x327>
+ 78a:	00 c0       	rjmp	.+0      	; 0x78c <__stack+0x32d>
+ 78c:	00 00       	nop
+ 78e:	8c e3       	ldi	r24, 0x3C	; 60
+ 790:	53 dc       	rcall	.-1882   	; 0x38 <enviaByte>
+ 792:	87 ea       	ldi	r24, 0xA7	; 167
+ 794:	91 e6       	ldi	r25, 0x61	; 97
+ 796:	01 97       	sbiw	r24, 0x01	; 1
+ 798:	f1 f7       	brne	.-4      	; 0x796 <__stack+0x337>
+ 79a:	00 c0       	rjmp	.+0      	; 0x79c <__stack+0x33d>
+ 79c:	00 00       	nop
+ 79e:	8c e2       	ldi	r24, 0x2C	; 44
+ 7a0:	4b dc       	rcall	.-1898   	; 0x38 <enviaByte>
+ 7a2:	87 ea       	ldi	r24, 0xA7	; 167
+ 7a4:	91 e6       	ldi	r25, 0x61	; 97
+ 7a6:	01 97       	sbiw	r24, 0x01	; 1
+ 7a8:	f1 f7       	brne	.-4      	; 0x7a6 <__stack+0x347>
+ 7aa:	00 c0       	rjmp	.+0      	; 0x7ac <__stack+0x34d>
+ 7ac:	00 00       	nop
+ 7ae:	85 e4       	ldi	r24, 0x45	; 69
+ 7b0:	43 dc       	rcall	.-1914   	; 0x38 <enviaByte>
+ 7b2:	87 ea       	ldi	r24, 0xA7	; 167
+ 7b4:	91 e6       	ldi	r25, 0x61	; 97
+ 7b6:	01 97       	sbiw	r24, 0x01	; 1
+ 7b8:	f1 f7       	brne	.-4      	; 0x7b6 <__stack+0x357>
+ 7ba:	00 c0       	rjmp	.+0      	; 0x7bc <__stack+0x35d>
+ 7bc:	00 00       	nop
+ 7be:	86 e3       	ldi	r24, 0x36	; 54
+ 7c0:	3b dc       	rcall	.-1930   	; 0x38 <enviaByte>
+ 7c2:	87 ea       	ldi	r24, 0xA7	; 167
+ 7c4:	91 e6       	ldi	r25, 0x61	; 97
+ 7c6:	01 97       	sbiw	r24, 0x01	; 1
+ 7c8:	f1 f7       	brne	.-4      	; 0x7c6 <__stack+0x367>
+ 7ca:	00 c0       	rjmp	.+0      	; 0x7cc <__stack+0x36d>
+ 7cc:	00 00       	nop
+ 7ce:	89 e2       	ldi	r24, 0x29	; 41
+ 7d0:	33 dc       	rcall	.-1946   	; 0x38 <enviaByte>
+ 7d2:	87 ea       	ldi	r24, 0xA7	; 167
+ 7d4:	91 e6       	ldi	r25, 0x61	; 97
+ 7d6:	01 97       	sbiw	r24, 0x01	; 1
+ 7d8:	f1 f7       	brne	.-4      	; 0x7d6 <__stack+0x377>
+ 7da:	00 c0       	rjmp	.+0      	; 0x7dc <__stack+0x37d>
+ 7dc:	00 00       	nop
+ 7de:	84 e4       	ldi	r24, 0x44	; 68
+ 7e0:	2b dc       	rcall	.-1962   	; 0x38 <enviaByte>
+ 7e2:	87 ea       	ldi	r24, 0xA7	; 167
+ 7e4:	91 e6       	ldi	r25, 0x61	; 97
+ 7e6:	01 97       	sbiw	r24, 0x01	; 1
+ 7e8:	f1 f7       	brne	.-4      	; 0x7e6 <__stack+0x387>
+ 7ea:	00 c0       	rjmp	.+0      	; 0x7ec <__stack+0x38d>
+ 7ec:	00 00       	nop
+ 7ee:	8b e2       	ldi	r24, 0x2B	; 43
+ 7f0:	23 dc       	rcall	.-1978   	; 0x38 <enviaByte>
+ 7f2:	87 ea       	ldi	r24, 0xA7	; 167
+ 7f4:	91 e6       	ldi	r25, 0x61	; 97
+ 7f6:	01 97       	sbiw	r24, 0x01	; 1
+ 7f8:	f1 f7       	brne	.-4      	; 0x7f6 <__stack+0x397>
+ 7fa:	00 c0       	rjmp	.+0      	; 0x7fc <__stack+0x39d>
+ 7fc:	00 00       	nop
+ 7fe:	8b e2       	ldi	r24, 0x2B	; 43
+ 800:	1b dc       	rcall	.-1994   	; 0x38 <enviaByte>
+ 802:	87 ea       	ldi	r24, 0xA7	; 167
+ 804:	91 e6       	ldi	r25, 0x61	; 97
+ 806:	01 97       	sbiw	r24, 0x01	; 1
+ 808:	f1 f7       	brne	.-4      	; 0x806 <__stack+0x3a7>
+ 80a:	00 c0       	rjmp	.+0      	; 0x80c <__stack+0x3ad>
+ 80c:	00 00       	nop
+ 80e:	8a e5       	ldi	r24, 0x5A	; 90
+ 810:	13 dc       	rcall	.-2010   	; 0x38 <enviaByte>
+ 812:	83 e2       	ldi	r24, 0x23	; 35
+ 814:	94 ef       	ldi	r25, 0xF4	; 244
+ 816:	01 97       	sbiw	r24, 0x01	; 1
+ 818:	f1 f7       	brne	.-4      	; 0x816 <__stack+0x3b7>
+ 81a:	00 c0       	rjmp	.+0      	; 0x81c <__stack+0x3bd>
+ 81c:	00 00       	nop
+ 81e:	84 e4       	ldi	r24, 0x44	; 68
+ 820:	0b dc       	rcall	.-2026   	; 0x38 <enviaByte>
+ 822:	87 ea       	ldi	r24, 0xA7	; 167
+ 824:	91 e6       	ldi	r25, 0x61	; 97
+ 826:	01 97       	sbiw	r24, 0x01	; 1
+ 828:	f1 f7       	brne	.-4      	; 0x826 <__stack+0x3c7>
+ 82a:	00 c0       	rjmp	.+0      	; 0x82c <__stack+0x3cd>
+ 82c:	00 00       	nop
+ 82e:	8c e3       	ldi	r24, 0x3C	; 60
+ 830:	03 dc       	rcall	.-2042   	; 0x38 <enviaByte>
+ 832:	87 ea       	ldi	r24, 0xA7	; 167
+ 834:	91 e6       	ldi	r25, 0x61	; 97
+ 836:	01 97       	sbiw	r24, 0x01	; 1
+ 838:	f1 f7       	brne	.-4      	; 0x836 <__stack+0x3d7>
+ 83a:	00 c0       	rjmp	.+0      	; 0x83c <__stack+0x3dd>
+ 83c:	00 00       	nop
+ 83e:	8c e2       	ldi	r24, 0x2C	; 44
+ 840:	fb db       	rcall	.-2058   	; 0x38 <enviaByte>
+ 842:	87 ea       	ldi	r24, 0xA7	; 167
+ 844:	91 e6       	ldi	r25, 0x61	; 97
+ 846:	01 97       	sbiw	r24, 0x01	; 1
+ 848:	f1 f7       	brne	.-4      	; 0x846 <__stack+0x3e7>
+ 84a:	00 c0       	rjmp	.+0      	; 0x84c <__stack+0x3ed>
+ 84c:	00 00       	nop
+ 84e:	85 e4       	ldi	r24, 0x45	; 69
+ 850:	f3 db       	rcall	.-2074   	; 0x38 <enviaByte>
+ 852:	87 ea       	ldi	r24, 0xA7	; 167
+ 854:	91 e6       	ldi	r25, 0x61	; 97
+ 856:	01 97       	sbiw	r24, 0x01	; 1
+ 858:	f1 f7       	brne	.-4      	; 0x856 <__stack+0x3f7>
+ 85a:	00 c0       	rjmp	.+0      	; 0x85c <__stack+0x3fd>
+ 85c:	00 00       	nop
+ 85e:	8d e3       	ldi	r24, 0x3D	; 61
+ 860:	eb db       	rcall	.-2090   	; 0x38 <enviaByte>
+ 862:	87 ea       	ldi	r24, 0xA7	; 167
+ 864:	91 e6       	ldi	r25, 0x61	; 97
+ 866:	01 97       	sbiw	r24, 0x01	; 1
+ 868:	f1 f7       	brne	.-4      	; 0x866 <__stack+0x407>
+ 86a:	00 c0       	rjmp	.+0      	; 0x86c <__stack+0x40d>
+ 86c:	00 00       	nop
+ 86e:	89 e2       	ldi	r24, 0x29	; 41
+ 870:	e3 db       	rcall	.-2106   	; 0x38 <enviaByte>
+ 872:	87 ea       	ldi	r24, 0xA7	; 167
+ 874:	91 e6       	ldi	r25, 0x61	; 97
+ 876:	01 97       	sbiw	r24, 0x01	; 1
+ 878:	f1 f7       	brne	.-4      	; 0x876 <__stack+0x417>
+ 87a:	00 c0       	rjmp	.+0      	; 0x87c <__stack+0x41d>
+ 87c:	00 00       	nop
+ 87e:	84 e4       	ldi	r24, 0x44	; 68
+ 880:	db db       	rcall	.-2122   	; 0x38 <enviaByte>
+ 882:	87 ea       	ldi	r24, 0xA7	; 167
+ 884:	91 e6       	ldi	r25, 0x61	; 97
+ 886:	01 97       	sbiw	r24, 0x01	; 1
+ 888:	f1 f7       	brne	.-4      	; 0x886 <__stack+0x427>
+ 88a:	00 c0       	rjmp	.+0      	; 0x88c <__stack+0x42d>
+ 88c:	00 00       	nop
+ 88e:	81 e3       	ldi	r24, 0x31	; 49
+ 890:	d3 db       	rcall	.-2138   	; 0x38 <enviaByte>
+ 892:	87 ea       	ldi	r24, 0xA7	; 167
+ 894:	91 e6       	ldi	r25, 0x61	; 97
+ 896:	01 97       	sbiw	r24, 0x01	; 1
+ 898:	f1 f7       	brne	.-4      	; 0x896 <__stack+0x437>
+ 89a:	00 c0       	rjmp	.+0      	; 0x89c <__stack+0x43d>
+ 89c:	00 00       	nop
+ 89e:	8a e5       	ldi	r24, 0x5A	; 90
+ 8a0:	cb db       	rcall	.-2154   	; 0x38 <enviaByte>
+ 8a2:	83 e2       	ldi	r24, 0x23	; 35
+ 8a4:	94 ef       	ldi	r25, 0xF4	; 244
+ 8a6:	01 97       	sbiw	r24, 0x01	; 1
+ 8a8:	f1 f7       	brne	.-4      	; 0x8a6 <__stack+0x447>
+ 8aa:	00 c0       	rjmp	.+0      	; 0x8ac <__stack+0x44d>
+ 8ac:	00 00       	nop
+ 8ae:	84 e4       	ldi	r24, 0x44	; 68
+ 8b0:	c3 db       	rcall	.-2170   	; 0x38 <enviaByte>
+ 8b2:	87 ea       	ldi	r24, 0xA7	; 167
+ 8b4:	91 e6       	ldi	r25, 0x61	; 97
+ 8b6:	01 97       	sbiw	r24, 0x01	; 1
+ 8b8:	f1 f7       	brne	.-4      	; 0x8b6 <__stack+0x457>
+ 8ba:	00 c0       	rjmp	.+0      	; 0x8bc <__stack+0x45d>
+ 8bc:	00 00       	nop
+ 8be:	8c e3       	ldi	r24, 0x3C	; 60
+ 8c0:	bb db       	rcall	.-2186   	; 0x38 <enviaByte>
+ 8c2:	87 ea       	ldi	r24, 0xA7	; 167
+ 8c4:	91 e6       	ldi	r25, 0x61	; 97
+ 8c6:	01 97       	sbiw	r24, 0x01	; 1
+ 8c8:	f1 f7       	brne	.-4      	; 0x8c6 <__stack+0x467>
+ 8ca:	00 c0       	rjmp	.+0      	; 0x8cc <__stack+0x46d>
+ 8cc:	00 00       	nop
+ 8ce:	8c e2       	ldi	r24, 0x2C	; 44
+ 8d0:	b3 db       	rcall	.-2202   	; 0x38 <enviaByte>
+ 8d2:	87 ea       	ldi	r24, 0xA7	; 167
+ 8d4:	91 e6       	ldi	r25, 0x61	; 97
+ 8d6:	01 97       	sbiw	r24, 0x01	; 1
+ 8d8:	f1 f7       	brne	.-4      	; 0x8d6 <__stack+0x477>
+ 8da:	00 c0       	rjmp	.+0      	; 0x8dc <__stack+0x47d>
+ 8dc:	00 00       	nop
+ 8de:	85 e4       	ldi	r24, 0x45	; 69
+ 8e0:	ab db       	rcall	.-2218   	; 0x38 <enviaByte>
+ 8e2:	87 ea       	ldi	r24, 0xA7	; 167
+ 8e4:	91 e6       	ldi	r25, 0x61	; 97
+ 8e6:	01 97       	sbiw	r24, 0x01	; 1
+ 8e8:	f1 f7       	brne	.-4      	; 0x8e6 <__stack+0x487>
+ 8ea:	00 c0       	rjmp	.+0      	; 0x8ec <__stack+0x48d>
+ 8ec:	00 00       	nop
+ 8ee:	8d e3       	ldi	r24, 0x3D	; 61
+ 8f0:	a3 db       	rcall	.-2234   	; 0x38 <enviaByte>
+ 8f2:	87 ea       	ldi	r24, 0xA7	; 167
+ 8f4:	91 e6       	ldi	r25, 0x61	; 97
+ 8f6:	01 97       	sbiw	r24, 0x01	; 1
+ 8f8:	f1 f7       	brne	.-4      	; 0x8f6 <__stack+0x497>
+ 8fa:	00 c0       	rjmp	.+0      	; 0x8fc <__stack+0x49d>
+ 8fc:	00 00       	nop
+ 8fe:	89 e2       	ldi	r24, 0x29	; 41
+ 900:	9b db       	rcall	.-2250   	; 0x38 <enviaByte>
+ 902:	87 ea       	ldi	r24, 0xA7	; 167
+ 904:	91 e6       	ldi	r25, 0x61	; 97
+ 906:	01 97       	sbiw	r24, 0x01	; 1
+ 908:	f1 f7       	brne	.-4      	; 0x906 <__stack+0x4a7>
+ 90a:	00 c0       	rjmp	.+0      	; 0x90c <__stack+0x4ad>
+ 90c:	00 00       	nop
+ 90e:	84 e4       	ldi	r24, 0x44	; 68
+ 910:	93 db       	rcall	.-2266   	; 0x38 <enviaByte>
+ 912:	87 ea       	ldi	r24, 0xA7	; 167
+ 914:	91 e6       	ldi	r25, 0x61	; 97
+ 916:	01 97       	sbiw	r24, 0x01	; 1
+ 918:	f1 f7       	brne	.-4      	; 0x916 <__stack+0x4b7>
+ 91a:	00 c0       	rjmp	.+0      	; 0x91c <__stack+0x4bd>
+ 91c:	00 00       	nop
+ 91e:	8b e2       	ldi	r24, 0x2B	; 43
+ 920:	8b db       	rcall	.-2282   	; 0x38 <enviaByte>
+ 922:	87 ea       	ldi	r24, 0xA7	; 167
+ 924:	91 e6       	ldi	r25, 0x61	; 97
+ 926:	01 97       	sbiw	r24, 0x01	; 1
+ 928:	f1 f7       	brne	.-4      	; 0x926 <__stack+0x4c7>
+ 92a:	00 c0       	rjmp	.+0      	; 0x92c <__stack+0x4cd>
+ 92c:	00 00       	nop
+ 92e:	8b e2       	ldi	r24, 0x2B	; 43
+ 930:	83 db       	rcall	.-2298   	; 0x38 <enviaByte>
+ 932:	87 ea       	ldi	r24, 0xA7	; 167
+ 934:	91 e6       	ldi	r25, 0x61	; 97
+ 936:	01 97       	sbiw	r24, 0x01	; 1
+ 938:	f1 f7       	brne	.-4      	; 0x936 <__stack+0x4d7>
+ 93a:	00 c0       	rjmp	.+0      	; 0x93c <__stack+0x4dd>
+ 93c:	00 00       	nop
+ 93e:	8a e5       	ldi	r24, 0x5A	; 90
+ 940:	7b db       	rcall	.-2314   	; 0x38 <enviaByte>
+ 942:	83 e2       	ldi	r24, 0x23	; 35
+ 944:	94 ef       	ldi	r25, 0xF4	; 244
+ 946:	01 97       	sbiw	r24, 0x01	; 1
+ 948:	f1 f7       	brne	.-4      	; 0x946 <__stack+0x4e7>
+ 94a:	00 c0       	rjmp	.+0      	; 0x94c <__stack+0x4ed>
+ 94c:	00 00       	nop
+ 94e:	08 95       	ret
+
+00000950 <main>:
+ 950:	8f ef       	ldi	r24, 0xFF	; 255
+ 952:	87 bb       	out	0x17, r24	; 23
+ 954:	88 bb       	out	0x18, r24	; 24
+ 956:	2f eb       	ldi	r18, 0xBF	; 191
+ 958:	86 ec       	ldi	r24, 0xC6	; 198
+ 95a:	9d e2       	ldi	r25, 0x2D	; 45
+ 95c:	21 50       	subi	r18, 0x01	; 1
+ 95e:	80 40       	sbci	r24, 0x00	; 0
+ 960:	90 40       	sbci	r25, 0x00	; 0
+ 962:	e1 f7       	brne	.-8      	; 0x95c <main+0xc>
+ 964:	00 c0       	rjmp	.+0      	; 0x966 <main+0x16>
+ 966:	00 00       	nop
+ 968:	c9 e0       	ldi	r28, 0x09	; 9
+ 96a:	d0 e0       	ldi	r29, 0x00	; 0
+ 96c:	86 e6       	ldi	r24, 0x66	; 102
+ 96e:	64 db       	rcall	.-2360   	; 0x38 <enviaByte>
+ 970:	87 ea       	ldi	r24, 0xA7	; 167
+ 972:	91 e6       	ldi	r25, 0x61	; 97
+ 974:	01 97       	sbiw	r24, 0x01	; 1
+ 976:	f1 f7       	brne	.-4      	; 0x974 <main+0x24>
+ 978:	00 c0       	rjmp	.+0      	; 0x97a <main+0x2a>
+ 97a:	00 00       	nop
+ 97c:	86 e6       	ldi	r24, 0x66	; 102
+ 97e:	5c db       	rcall	.-2376   	; 0x38 <enviaByte>
+ 980:	87 ea       	ldi	r24, 0xA7	; 167
+ 982:	91 e6       	ldi	r25, 0x61	; 97
+ 984:	01 97       	sbiw	r24, 0x01	; 1
+ 986:	f1 f7       	brne	.-4      	; 0x984 <main+0x34>
+ 988:	00 c0       	rjmp	.+0      	; 0x98a <main+0x3a>
+ 98a:	00 00       	nop
+ 98c:	86 e6       	ldi	r24, 0x66	; 102
+ 98e:	54 db       	rcall	.-2392   	; 0x38 <enviaByte>
+ 990:	87 ea       	ldi	r24, 0xA7	; 167
+ 992:	91 e6       	ldi	r25, 0x61	; 97
+ 994:	01 97       	sbiw	r24, 0x01	; 1
+ 996:	f1 f7       	brne	.-4      	; 0x994 <main+0x44>
+ 998:	00 c0       	rjmp	.+0      	; 0x99a <main+0x4a>
+ 99a:	00 00       	nop
+ 99c:	86 e6       	ldi	r24, 0x66	; 102
+ 99e:	4c db       	rcall	.-2408   	; 0x38 <enviaByte>
+ 9a0:	87 ea       	ldi	r24, 0xA7	; 167
+ 9a2:	91 e6       	ldi	r25, 0x61	; 97
+ 9a4:	01 97       	sbiw	r24, 0x01	; 1
+ 9a6:	f1 f7       	brne	.-4      	; 0x9a4 <main+0x54>
+ 9a8:	00 c0       	rjmp	.+0      	; 0x9aa <main+0x5a>
+ 9aa:	00 00       	nop
+ 9ac:	86 e6       	ldi	r24, 0x66	; 102
+ 9ae:	44 db       	rcall	.-2424   	; 0x38 <enviaByte>
+ 9b0:	87 ea       	ldi	r24, 0xA7	; 167
+ 9b2:	91 e6       	ldi	r25, 0x61	; 97
+ 9b4:	01 97       	sbiw	r24, 0x01	; 1
+ 9b6:	f1 f7       	brne	.-4      	; 0x9b4 <main+0x64>
+ 9b8:	00 c0       	rjmp	.+0      	; 0x9ba <main+0x6a>
+ 9ba:	00 00       	nop
+ 9bc:	86 e6       	ldi	r24, 0x66	; 102
+ 9be:	3c db       	rcall	.-2440   	; 0x38 <enviaByte>
+ 9c0:	87 ea       	ldi	r24, 0xA7	; 167
+ 9c2:	91 e6       	ldi	r25, 0x61	; 97
+ 9c4:	01 97       	sbiw	r24, 0x01	; 1
+ 9c6:	f1 f7       	brne	.-4      	; 0x9c4 <main+0x74>
+ 9c8:	00 c0       	rjmp	.+0      	; 0x9ca <main+0x7a>
+ 9ca:	00 00       	nop
+ 9cc:	86 e6       	ldi	r24, 0x66	; 102
+ 9ce:	34 db       	rcall	.-2456   	; 0x38 <enviaByte>
+ 9d0:	87 ea       	ldi	r24, 0xA7	; 167
+ 9d2:	91 e6       	ldi	r25, 0x61	; 97
+ 9d4:	01 97       	sbiw	r24, 0x01	; 1
+ 9d6:	f1 f7       	brne	.-4      	; 0x9d4 <main+0x84>
+ 9d8:	00 c0       	rjmp	.+0      	; 0x9da <main+0x8a>
+ 9da:	00 00       	nop
+ 9dc:	86 e6       	ldi	r24, 0x66	; 102
+ 9de:	2c db       	rcall	.-2472   	; 0x38 <enviaByte>
+ 9e0:	87 ea       	ldi	r24, 0xA7	; 167
+ 9e2:	91 e6       	ldi	r25, 0x61	; 97
+ 9e4:	01 97       	sbiw	r24, 0x01	; 1
+ 9e6:	f1 f7       	brne	.-4      	; 0x9e4 <main+0x94>
+ 9e8:	00 c0       	rjmp	.+0      	; 0x9ea <main+0x9a>
+ 9ea:	00 00       	nop
+ 9ec:	21 97       	sbiw	r28, 0x01	; 1
+ 9ee:	09 f0       	breq	.+2      	; 0x9f2 <main+0xa2>
+ 9f0:	bd cf       	rjmp	.-134    	; 0x96c <main+0x1c>
+ 9f2:	85 db       	rcall	.-2294   	; 0xfe <ligaDesligaNaSequencia>
+ 9f4:	84 e4       	ldi	r24, 0x44	; 68
+ 9f6:	20 db       	rcall	.-2496   	; 0x38 <enviaByte>
+ 9f8:	87 ea       	ldi	r24, 0xA7	; 167
+ 9fa:	91 e6       	ldi	r25, 0x61	; 97
+ 9fc:	01 97       	sbiw	r24, 0x01	; 1
+ 9fe:	f1 f7       	brne	.-4      	; 0x9fc <main+0xac>
+ a00:	00 c0       	rjmp	.+0      	; 0xa02 <main+0xb2>
+ a02:	00 00       	nop
+ a04:	8c e3       	ldi	r24, 0x3C	; 60
+ a06:	18 db       	rcall	.-2512   	; 0x38 <enviaByte>
+ a08:	87 ea       	ldi	r24, 0xA7	; 167
+ a0a:	91 e6       	ldi	r25, 0x61	; 97
+ a0c:	01 97       	sbiw	r24, 0x01	; 1
+ a0e:	f1 f7       	brne	.-4      	; 0xa0c <main+0xbc>
+ a10:	00 c0       	rjmp	.+0      	; 0xa12 <main+0xc2>
+ a12:	00 00       	nop
+ a14:	8c e2       	ldi	r24, 0x2C	; 44
+ a16:	10 db       	rcall	.-2528   	; 0x38 <enviaByte>
+ a18:	87 ea       	ldi	r24, 0xA7	; 167
+ a1a:	91 e6       	ldi	r25, 0x61	; 97
+ a1c:	01 97       	sbiw	r24, 0x01	; 1
+ a1e:	f1 f7       	brne	.-4      	; 0xa1c <main+0xcc>
+ a20:	00 c0       	rjmp	.+0      	; 0xa22 <main+0xd2>
+ a22:	00 00       	nop
+ a24:	86 e1       	ldi	r24, 0x16	; 22
+ a26:	08 db       	rcall	.-2544   	; 0x38 <enviaByte>
+ a28:	87 ea       	ldi	r24, 0xA7	; 167
+ a2a:	91 e6       	ldi	r25, 0x61	; 97
+ a2c:	01 97       	sbiw	r24, 0x01	; 1
+ a2e:	f1 f7       	brne	.-4      	; 0xa2c <main+0xdc>
+ a30:	00 c0       	rjmp	.+0      	; 0xa32 <main+0xe2>
+ a32:	00 00       	nop
+ a34:	86 e1       	ldi	r24, 0x16	; 22
+ a36:	00 db       	rcall	.-2560   	; 0x38 <enviaByte>
+ a38:	87 ea       	ldi	r24, 0xA7	; 167
+ a3a:	91 e6       	ldi	r25, 0x61	; 97
+ a3c:	01 97       	sbiw	r24, 0x01	; 1
+ a3e:	f1 f7       	brne	.-4      	; 0xa3c <main+0xec>
+ a40:	00 c0       	rjmp	.+0      	; 0xa42 <main+0xf2>
+ a42:	00 00       	nop
+ a44:	89 e2       	ldi	r24, 0x29	; 41
+ a46:	f8 da       	rcall	.-2576   	; 0x38 <enviaByte>
+ a48:	87 ea       	ldi	r24, 0xA7	; 167
+ a4a:	91 e6       	ldi	r25, 0x61	; 97
+ a4c:	01 97       	sbiw	r24, 0x01	; 1
+ a4e:	f1 f7       	brne	.-4      	; 0xa4c <main+0xfc>
+ a50:	00 c0       	rjmp	.+0      	; 0xa52 <main+0x102>
+ a52:	00 00       	nop
+ a54:	84 e4       	ldi	r24, 0x44	; 68
+ a56:	f0 da       	rcall	.-2592   	; 0x38 <enviaByte>
+ a58:	87 ea       	ldi	r24, 0xA7	; 167
+ a5a:	91 e6       	ldi	r25, 0x61	; 97
+ a5c:	01 97       	sbiw	r24, 0x01	; 1
+ a5e:	f1 f7       	brne	.-4      	; 0xa5c <main+0x10c>
+ a60:	00 c0       	rjmp	.+0      	; 0xa62 <main+0x112>
+ a62:	00 00       	nop
+ a64:	81 e3       	ldi	r24, 0x31	; 49
+ a66:	e8 da       	rcall	.-2608   	; 0x38 <enviaByte>
+ a68:	87 ea       	ldi	r24, 0xA7	; 167
+ a6a:	91 e6       	ldi	r25, 0x61	; 97
+ a6c:	01 97       	sbiw	r24, 0x01	; 1
+ a6e:	f1 f7       	brne	.-4      	; 0xa6c <main+0x11c>
+ a70:	00 c0       	rjmp	.+0      	; 0xa72 <main+0x122>
+ a72:	00 00       	nop
+ a74:	8a e5       	ldi	r24, 0x5A	; 90
+ a76:	e0 da       	rcall	.-2624   	; 0x38 <enviaByte>
+ a78:	9f e3       	ldi	r25, 0x3F	; 63
+ a7a:	2d e0       	ldi	r18, 0x0D	; 13
+ a7c:	83 e0       	ldi	r24, 0x03	; 3
+ a7e:	91 50       	subi	r25, 0x01	; 1
+ a80:	20 40       	sbci	r18, 0x00	; 0
+ a82:	80 40       	sbci	r24, 0x00	; 0
+ a84:	e1 f7       	brne	.-8      	; 0xa7e <main+0x12e>
+ a86:	00 c0       	rjmp	.+0      	; 0xa88 <main+0x138>
+ a88:	00 00       	nop
+ a8a:	83 e4       	ldi	r24, 0x43	; 67
+ a8c:	d5 da       	rcall	.-2646   	; 0x38 <enviaByte>
+ a8e:	87 ea       	ldi	r24, 0xA7	; 167
+ a90:	91 e6       	ldi	r25, 0x61	; 97
+ a92:	01 97       	sbiw	r24, 0x01	; 1
+ a94:	f1 f7       	brne	.-4      	; 0xa92 <main+0x142>
+ a96:	00 c0       	rjmp	.+0      	; 0xa98 <main+0x148>
+ a98:	00 00       	nop
+ a9a:	81 e3       	ldi	r24, 0x31	; 49
+ a9c:	cd da       	rcall	.-2662   	; 0x38 <enviaByte>
+ a9e:	87 ea       	ldi	r24, 0xA7	; 167
+ aa0:	91 e6       	ldi	r25, 0x61	; 97
+ aa2:	01 97       	sbiw	r24, 0x01	; 1
+ aa4:	f1 f7       	brne	.-4      	; 0xaa2 <main+0x152>
+ aa6:	00 c0       	rjmp	.+0      	; 0xaa8 <main+0x158>
+ aa8:	00 00       	nop
+ aaa:	8e e1       	ldi	r24, 0x1E	; 30
+ aac:	c5 da       	rcall	.-2678   	; 0x38 <enviaByte>
+ aae:	87 ea       	ldi	r24, 0xA7	; 167
+ ab0:	91 e6       	ldi	r25, 0x61	; 97
+ ab2:	01 97       	sbiw	r24, 0x01	; 1
+ ab4:	f1 f7       	brne	.-4      	; 0xab2 <main+0x162>
+ ab6:	00 c0       	rjmp	.+0      	; 0xab8 <main+0x168>
+ ab8:	00 00       	nop
+ aba:	8e e1       	ldi	r24, 0x1E	; 30
+ abc:	bd da       	rcall	.-2694   	; 0x38 <enviaByte>
+ abe:	87 ea       	ldi	r24, 0xA7	; 167
+ ac0:	91 e6       	ldi	r25, 0x61	; 97
+ ac2:	01 97       	sbiw	r24, 0x01	; 1
+ ac4:	f1 f7       	brne	.-4      	; 0xac2 <main+0x172>
+ ac6:	00 c0       	rjmp	.+0      	; 0xac8 <main+0x178>
+ ac8:	00 00       	nop
+ aca:	8a e5       	ldi	r24, 0x5A	; 90
+ acc:	b5 da       	rcall	.-2710   	; 0x38 <enviaByte>
+ ace:	9f eb       	ldi	r25, 0xBF	; 191
+ ad0:	27 e2       	ldi	r18, 0x27	; 39
+ ad2:	89 e0       	ldi	r24, 0x09	; 9
+ ad4:	91 50       	subi	r25, 0x01	; 1
+ ad6:	20 40       	sbci	r18, 0x00	; 0
+ ad8:	80 40       	sbci	r24, 0x00	; 0
+ ada:	e1 f7       	brne	.-8      	; 0xad4 <main+0x184>
+ adc:	00 c0       	rjmp	.+0      	; 0xade <main+0x18e>
+ ade:	00 00       	nop
+ ae0:	84 e4       	ldi	r24, 0x44	; 68
+ ae2:	aa da       	rcall	.-2732   	; 0x38 <enviaByte>
+ ae4:	87 ea       	ldi	r24, 0xA7	; 167
+ ae6:	91 e6       	ldi	r25, 0x61	; 97
+ ae8:	01 97       	sbiw	r24, 0x01	; 1
+ aea:	f1 f7       	brne	.-4      	; 0xae8 <main+0x198>
+ aec:	00 c0       	rjmp	.+0      	; 0xaee <main+0x19e>
+ aee:	00 00       	nop
+ af0:	8c e3       	ldi	r24, 0x3C	; 60
+ af2:	a2 da       	rcall	.-2748   	; 0x38 <enviaByte>
+ af4:	87 ea       	ldi	r24, 0xA7	; 167
+ af6:	91 e6       	ldi	r25, 0x61	; 97
+ af8:	01 97       	sbiw	r24, 0x01	; 1
+ afa:	f1 f7       	brne	.-4      	; 0xaf8 <main+0x1a8>
+ afc:	00 c0       	rjmp	.+0      	; 0xafe <main+0x1ae>
+ afe:	00 00       	nop
+ b00:	8c e2       	ldi	r24, 0x2C	; 44
+ b02:	9a da       	rcall	.-2764   	; 0x38 <enviaByte>
+ b04:	87 ea       	ldi	r24, 0xA7	; 167
+ b06:	91 e6       	ldi	r25, 0x61	; 97
+ b08:	01 97       	sbiw	r24, 0x01	; 1
+ b0a:	f1 f7       	brne	.-4      	; 0xb08 <main+0x1b8>
+ b0c:	00 c0       	rjmp	.+0      	; 0xb0e <main+0x1be>
+ b0e:	00 00       	nop
+ b10:	86 e1       	ldi	r24, 0x16	; 22
+ b12:	92 da       	rcall	.-2780   	; 0x38 <enviaByte>
+ b14:	87 ea       	ldi	r24, 0xA7	; 167
+ b16:	91 e6       	ldi	r25, 0x61	; 97
+ b18:	01 97       	sbiw	r24, 0x01	; 1
+ b1a:	f1 f7       	brne	.-4      	; 0xb18 <main+0x1c8>
+ b1c:	00 c0       	rjmp	.+0      	; 0xb1e <main+0x1ce>
+ b1e:	00 00       	nop
+ b20:	86 e1       	ldi	r24, 0x16	; 22
+ b22:	8a da       	rcall	.-2796   	; 0x38 <enviaByte>
+ b24:	87 ea       	ldi	r24, 0xA7	; 167
+ b26:	91 e6       	ldi	r25, 0x61	; 97
+ b28:	01 97       	sbiw	r24, 0x01	; 1
+ b2a:	f1 f7       	brne	.-4      	; 0xb28 <main+0x1d8>
+ b2c:	00 c0       	rjmp	.+0      	; 0xb2e <main+0x1de>
+ b2e:	00 00       	nop
+ b30:	89 e2       	ldi	r24, 0x29	; 41
+ b32:	82 da       	rcall	.-2812   	; 0x38 <enviaByte>
+ b34:	87 ea       	ldi	r24, 0xA7	; 167
+ b36:	91 e6       	ldi	r25, 0x61	; 97
+ b38:	01 97       	sbiw	r24, 0x01	; 1
+ b3a:	f1 f7       	brne	.-4      	; 0xb38 <main+0x1e8>
+ b3c:	00 c0       	rjmp	.+0      	; 0xb3e <main+0x1ee>
+ b3e:	00 00       	nop
+ b40:	84 e4       	ldi	r24, 0x44	; 68
+ b42:	7a da       	rcall	.-2828   	; 0x38 <enviaByte>
+ b44:	87 ea       	ldi	r24, 0xA7	; 167
+ b46:	91 e6       	ldi	r25, 0x61	; 97
+ b48:	01 97       	sbiw	r24, 0x01	; 1
+ b4a:	f1 f7       	brne	.-4      	; 0xb48 <main+0x1f8>
+ b4c:	00 c0       	rjmp	.+0      	; 0xb4e <main+0x1fe>
+ b4e:	00 00       	nop
+ b50:	8b e2       	ldi	r24, 0x2B	; 43
+ b52:	72 da       	rcall	.-2844   	; 0x38 <enviaByte>
+ b54:	87 ea       	ldi	r24, 0xA7	; 167
+ b56:	91 e6       	ldi	r25, 0x61	; 97
+ b58:	01 97       	sbiw	r24, 0x01	; 1
+ b5a:	f1 f7       	brne	.-4      	; 0xb58 <main+0x208>
+ b5c:	00 c0       	rjmp	.+0      	; 0xb5e <main+0x20e>
+ b5e:	00 00       	nop
+ b60:	8b e2       	ldi	r24, 0x2B	; 43
+ b62:	6a da       	rcall	.-2860   	; 0x38 <enviaByte>
+ b64:	87 ea       	ldi	r24, 0xA7	; 167
+ b66:	91 e6       	ldi	r25, 0x61	; 97
+ b68:	01 97       	sbiw	r24, 0x01	; 1
+ b6a:	f1 f7       	brne	.-4      	; 0xb68 <main+0x218>
+ b6c:	00 c0       	rjmp	.+0      	; 0xb6e <main+0x21e>
+ b6e:	00 00       	nop
+ b70:	8a e5       	ldi	r24, 0x5A	; 90
+ b72:	62 da       	rcall	.-2876   	; 0x38 <enviaByte>
+ b74:	9f e3       	ldi	r25, 0x3F	; 63
+ b76:	2d e0       	ldi	r18, 0x0D	; 13
+ b78:	83 e0       	ldi	r24, 0x03	; 3
+ b7a:	91 50       	subi	r25, 0x01	; 1
+ b7c:	20 40       	sbci	r18, 0x00	; 0
+ b7e:	80 40       	sbci	r24, 0x00	; 0
+ b80:	e1 f7       	brne	.-8      	; 0xb7a <main+0x22a>
+ b82:	00 c0       	rjmp	.+0      	; 0xb84 <main+0x234>
+ b84:	00 00       	nop
+ b86:	83 e4       	ldi	r24, 0x43	; 67
+ b88:	57 da       	rcall	.-2898   	; 0x38 <enviaByte>
+ b8a:	87 ea       	ldi	r24, 0xA7	; 167
+ b8c:	91 e6       	ldi	r25, 0x61	; 97
+ b8e:	01 97       	sbiw	r24, 0x01	; 1
+ b90:	f1 f7       	brne	.-4      	; 0xb8e <main+0x23e>
+ b92:	00 c0       	rjmp	.+0      	; 0xb94 <main+0x244>
+ b94:	00 00       	nop
+ b96:	81 e3       	ldi	r24, 0x31	; 49
+ b98:	4f da       	rcall	.-2914   	; 0x38 <enviaByte>
+ b9a:	87 ea       	ldi	r24, 0xA7	; 167
+ b9c:	91 e6       	ldi	r25, 0x61	; 97
+ b9e:	01 97       	sbiw	r24, 0x01	; 1
+ ba0:	f1 f7       	brne	.-4      	; 0xb9e <main+0x24e>
+ ba2:	00 c0       	rjmp	.+0      	; 0xba4 <main+0x254>
+ ba4:	00 00       	nop
+ ba6:	8e e1       	ldi	r24, 0x1E	; 30
+ ba8:	47 da       	rcall	.-2930   	; 0x38 <enviaByte>
+ baa:	87 ea       	ldi	r24, 0xA7	; 167
+ bac:	91 e6       	ldi	r25, 0x61	; 97
+ bae:	01 97       	sbiw	r24, 0x01	; 1
+ bb0:	f1 f7       	brne	.-4      	; 0xbae <main+0x25e>
+ bb2:	00 c0       	rjmp	.+0      	; 0xbb4 <main+0x264>
+ bb4:	00 00       	nop
+ bb6:	8e e1       	ldi	r24, 0x1E	; 30
+ bb8:	3f da       	rcall	.-2946   	; 0x38 <enviaByte>
+ bba:	87 ea       	ldi	r24, 0xA7	; 167
+ bbc:	91 e6       	ldi	r25, 0x61	; 97
+ bbe:	01 97       	sbiw	r24, 0x01	; 1
+ bc0:	f1 f7       	brne	.-4      	; 0xbbe <main+0x26e>
+ bc2:	00 c0       	rjmp	.+0      	; 0xbc4 <main+0x274>
+ bc4:	00 00       	nop
+ bc6:	8a e5       	ldi	r24, 0x5A	; 90
+ bc8:	37 da       	rcall	.-2962   	; 0x38 <enviaByte>
+ bca:	9f eb       	ldi	r25, 0xBF	; 191
+ bcc:	27 e2       	ldi	r18, 0x27	; 39
+ bce:	89 e0       	ldi	r24, 0x09	; 9
+ bd0:	91 50       	subi	r25, 0x01	; 1
+ bd2:	20 40       	sbci	r18, 0x00	; 0
+ bd4:	80 40       	sbci	r24, 0x00	; 0
+ bd6:	e1 f7       	brne	.-8      	; 0xbd0 <main+0x280>
+ bd8:	00 c0       	rjmp	.+0      	; 0xbda <main+0x28a>
+ bda:	00 00       	nop
+ bdc:	84 e4       	ldi	r24, 0x44	; 68
+ bde:	2c da       	rcall	.-2984   	; 0x38 <enviaByte>
+ be0:	87 ea       	ldi	r24, 0xA7	; 167
+ be2:	91 e6       	ldi	r25, 0x61	; 97
+ be4:	01 97       	sbiw	r24, 0x01	; 1
+ be6:	f1 f7       	brne	.-4      	; 0xbe4 <main+0x294>
+ be8:	00 c0       	rjmp	.+0      	; 0xbea <main+0x29a>
+ bea:	00 00       	nop
+ bec:	8c e3       	ldi	r24, 0x3C	; 60
+ bee:	24 da       	rcall	.-3000   	; 0x38 <enviaByte>
+ bf0:	87 ea       	ldi	r24, 0xA7	; 167
+ bf2:	91 e6       	ldi	r25, 0x61	; 97
+ bf4:	01 97       	sbiw	r24, 0x01	; 1
+ bf6:	f1 f7       	brne	.-4      	; 0xbf4 <main+0x2a4>
+ bf8:	00 c0       	rjmp	.+0      	; 0xbfa <main+0x2aa>
+ bfa:	00 00       	nop
+ bfc:	8c e2       	ldi	r24, 0x2C	; 44
+ bfe:	1c da       	rcall	.-3016   	; 0x38 <enviaByte>
+ c00:	87 ea       	ldi	r24, 0xA7	; 167
+ c02:	91 e6       	ldi	r25, 0x61	; 97
+ c04:	01 97       	sbiw	r24, 0x01	; 1
+ c06:	f1 f7       	brne	.-4      	; 0xc04 <main+0x2b4>
+ c08:	00 c0       	rjmp	.+0      	; 0xc0a <main+0x2ba>
+ c0a:	00 00       	nop
+ c0c:	85 e4       	ldi	r24, 0x45	; 69
+ c0e:	14 da       	rcall	.-3032   	; 0x38 <enviaByte>
+ c10:	87 ea       	ldi	r24, 0xA7	; 167
+ c12:	91 e6       	ldi	r25, 0x61	; 97
+ c14:	01 97       	sbiw	r24, 0x01	; 1
+ c16:	f1 f7       	brne	.-4      	; 0xc14 <main+0x2c4>
+ c18:	00 c0       	rjmp	.+0      	; 0xc1a <main+0x2ca>
+ c1a:	00 00       	nop
+ c1c:	8e e1       	ldi	r24, 0x1E	; 30
+ c1e:	0c da       	rcall	.-3048   	; 0x38 <enviaByte>
+ c20:	87 ea       	ldi	r24, 0xA7	; 167
+ c22:	91 e6       	ldi	r25, 0x61	; 97
+ c24:	01 97       	sbiw	r24, 0x01	; 1
+ c26:	f1 f7       	brne	.-4      	; 0xc24 <main+0x2d4>
+ c28:	00 c0       	rjmp	.+0      	; 0xc2a <main+0x2da>
+ c2a:	00 00       	nop
+ c2c:	89 e2       	ldi	r24, 0x29	; 41
+ c2e:	04 da       	rcall	.-3064   	; 0x38 <enviaByte>
+ c30:	87 ea       	ldi	r24, 0xA7	; 167
+ c32:	91 e6       	ldi	r25, 0x61	; 97
+ c34:	01 97       	sbiw	r24, 0x01	; 1
+ c36:	f1 f7       	brne	.-4      	; 0xc34 <main+0x2e4>
+ c38:	00 c0       	rjmp	.+0      	; 0xc3a <main+0x2ea>
+ c3a:	00 00       	nop
+ c3c:	84 e4       	ldi	r24, 0x44	; 68
+ c3e:	fc d9       	rcall	.-3080   	; 0x38 <enviaByte>
+ c40:	87 ea       	ldi	r24, 0xA7	; 167
+ c42:	91 e6       	ldi	r25, 0x61	; 97
+ c44:	01 97       	sbiw	r24, 0x01	; 1
+ c46:	f1 f7       	brne	.-4      	; 0xc44 <main+0x2f4>
+ c48:	00 c0       	rjmp	.+0      	; 0xc4a <main+0x2fa>
+ c4a:	00 00       	nop
+ c4c:	81 e3       	ldi	r24, 0x31	; 49
+ c4e:	f4 d9       	rcall	.-3096   	; 0x38 <enviaByte>
+ c50:	87 ea       	ldi	r24, 0xA7	; 167
+ c52:	91 e6       	ldi	r25, 0x61	; 97
+ c54:	01 97       	sbiw	r24, 0x01	; 1
+ c56:	f1 f7       	brne	.-4      	; 0xc54 <main+0x304>
+ c58:	00 c0       	rjmp	.+0      	; 0xc5a <main+0x30a>
+ c5a:	00 00       	nop
+ c5c:	8a e5       	ldi	r24, 0x5A	; 90
+ c5e:	ec d9       	rcall	.-3112   	; 0x38 <enviaByte>
+ c60:	9f e3       	ldi	r25, 0x3F	; 63
+ c62:	2d e0       	ldi	r18, 0x0D	; 13
+ c64:	83 e0       	ldi	r24, 0x03	; 3
+ c66:	91 50       	subi	r25, 0x01	; 1
+ c68:	20 40       	sbci	r18, 0x00	; 0
+ c6a:	80 40       	sbci	r24, 0x00	; 0
+ c6c:	e1 f7       	brne	.-8      	; 0xc66 <main+0x316>
+ c6e:	00 c0       	rjmp	.+0      	; 0xc70 <main+0x320>
+ c70:	00 00       	nop
+ c72:	83 e4       	ldi	r24, 0x43	; 67
+ c74:	e1 d9       	rcall	.-3134   	; 0x38 <enviaByte>
+ c76:	87 ea       	ldi	r24, 0xA7	; 167
+ c78:	91 e6       	ldi	r25, 0x61	; 97
+ c7a:	01 97       	sbiw	r24, 0x01	; 1
+ c7c:	f1 f7       	brne	.-4      	; 0xc7a <main+0x32a>
+ c7e:	00 c0       	rjmp	.+0      	; 0xc80 <main+0x330>
+ c80:	00 00       	nop
+ c82:	81 e3       	ldi	r24, 0x31	; 49
+ c84:	d9 d9       	rcall	.-3150   	; 0x38 <enviaByte>
+ c86:	87 ea       	ldi	r24, 0xA7	; 167
+ c88:	91 e6       	ldi	r25, 0x61	; 97
+ c8a:	01 97       	sbiw	r24, 0x01	; 1
+ c8c:	f1 f7       	brne	.-4      	; 0xc8a <main+0x33a>
+ c8e:	00 c0       	rjmp	.+0      	; 0xc90 <main+0x340>
+ c90:	00 00       	nop
+ c92:	86 e2       	ldi	r24, 0x26	; 38
+ c94:	d1 d9       	rcall	.-3166   	; 0x38 <enviaByte>
+ c96:	87 ea       	ldi	r24, 0xA7	; 167
+ c98:	91 e6       	ldi	r25, 0x61	; 97
+ c9a:	01 97       	sbiw	r24, 0x01	; 1
+ c9c:	f1 f7       	brne	.-4      	; 0xc9a <main+0x34a>
+ c9e:	00 c0       	rjmp	.+0      	; 0xca0 <main+0x350>
+ ca0:	00 00       	nop
+ ca2:	86 e2       	ldi	r24, 0x26	; 38
+ ca4:	c9 d9       	rcall	.-3182   	; 0x38 <enviaByte>
+ ca6:	87 ea       	ldi	r24, 0xA7	; 167
+ ca8:	91 e6       	ldi	r25, 0x61	; 97
+ caa:	01 97       	sbiw	r24, 0x01	; 1
+ cac:	f1 f7       	brne	.-4      	; 0xcaa <main+0x35a>
+ cae:	00 c0       	rjmp	.+0      	; 0xcb0 <main+0x360>
+ cb0:	00 00       	nop
+ cb2:	8a e5       	ldi	r24, 0x5A	; 90
+ cb4:	c1 d9       	rcall	.-3198   	; 0x38 <enviaByte>
+ cb6:	9f eb       	ldi	r25, 0xBF	; 191
+ cb8:	27 e2       	ldi	r18, 0x27	; 39
+ cba:	89 e0       	ldi	r24, 0x09	; 9
+ cbc:	91 50       	subi	r25, 0x01	; 1
+ cbe:	20 40       	sbci	r18, 0x00	; 0
+ cc0:	80 40       	sbci	r24, 0x00	; 0
+ cc2:	e1 f7       	brne	.-8      	; 0xcbc <main+0x36c>
+ cc4:	00 c0       	rjmp	.+0      	; 0xcc6 <main+0x376>
+ cc6:	00 00       	nop
+ cc8:	84 e4       	ldi	r24, 0x44	; 68
+ cca:	b6 d9       	rcall	.-3220   	; 0x38 <enviaByte>
+ ccc:	87 ea       	ldi	r24, 0xA7	; 167
+ cce:	91 e6       	ldi	r25, 0x61	; 97
+ cd0:	01 97       	sbiw	r24, 0x01	; 1
+ cd2:	f1 f7       	brne	.-4      	; 0xcd0 <main+0x380>
+ cd4:	00 c0       	rjmp	.+0      	; 0xcd6 <main+0x386>
+ cd6:	00 00       	nop
+ cd8:	8c e3       	ldi	r24, 0x3C	; 60
+ cda:	ae d9       	rcall	.-3236   	; 0x38 <enviaByte>
+ cdc:	87 ea       	ldi	r24, 0xA7	; 167
+ cde:	91 e6       	ldi	r25, 0x61	; 97
+ ce0:	01 97       	sbiw	r24, 0x01	; 1
+ ce2:	f1 f7       	brne	.-4      	; 0xce0 <main+0x390>
+ ce4:	00 c0       	rjmp	.+0      	; 0xce6 <main+0x396>
+ ce6:	00 00       	nop
+ ce8:	8c e2       	ldi	r24, 0x2C	; 44
+ cea:	a6 d9       	rcall	.-3252   	; 0x38 <enviaByte>
+ cec:	87 ea       	ldi	r24, 0xA7	; 167
+ cee:	91 e6       	ldi	r25, 0x61	; 97
+ cf0:	01 97       	sbiw	r24, 0x01	; 1
+ cf2:	f1 f7       	brne	.-4      	; 0xcf0 <main+0x3a0>
+ cf4:	00 c0       	rjmp	.+0      	; 0xcf6 <main+0x3a6>
+ cf6:	00 00       	nop
+ cf8:	85 e4       	ldi	r24, 0x45	; 69
+ cfa:	9e d9       	rcall	.-3268   	; 0x38 <enviaByte>
+ cfc:	87 ea       	ldi	r24, 0xA7	; 167
+ cfe:	91 e6       	ldi	r25, 0x61	; 97
+ d00:	01 97       	sbiw	r24, 0x01	; 1
+ d02:	f1 f7       	brne	.-4      	; 0xd00 <main+0x3b0>
+ d04:	00 c0       	rjmp	.+0      	; 0xd06 <main+0x3b6>
+ d06:	00 00       	nop
+ d08:	8e e1       	ldi	r24, 0x1E	; 30
+ d0a:	96 d9       	rcall	.-3284   	; 0x38 <enviaByte>
+ d0c:	87 ea       	ldi	r24, 0xA7	; 167
+ d0e:	91 e6       	ldi	r25, 0x61	; 97
+ d10:	01 97       	sbiw	r24, 0x01	; 1
+ d12:	f1 f7       	brne	.-4      	; 0xd10 <main+0x3c0>
+ d14:	00 c0       	rjmp	.+0      	; 0xd16 <main+0x3c6>
+ d16:	00 00       	nop
+ d18:	89 e2       	ldi	r24, 0x29	; 41
+ d1a:	8e d9       	rcall	.-3300   	; 0x38 <enviaByte>
+ d1c:	87 ea       	ldi	r24, 0xA7	; 167
+ d1e:	91 e6       	ldi	r25, 0x61	; 97
+ d20:	01 97       	sbiw	r24, 0x01	; 1
+ d22:	f1 f7       	brne	.-4      	; 0xd20 <main+0x3d0>
+ d24:	00 c0       	rjmp	.+0      	; 0xd26 <main+0x3d6>
+ d26:	00 00       	nop
+ d28:	84 e4       	ldi	r24, 0x44	; 68
+ d2a:	86 d9       	rcall	.-3316   	; 0x38 <enviaByte>
+ d2c:	87 ea       	ldi	r24, 0xA7	; 167
+ d2e:	91 e6       	ldi	r25, 0x61	; 97
+ d30:	01 97       	sbiw	r24, 0x01	; 1
+ d32:	f1 f7       	brne	.-4      	; 0xd30 <main+0x3e0>
+ d34:	00 c0       	rjmp	.+0      	; 0xd36 <main+0x3e6>
+ d36:	00 00       	nop
+ d38:	8b e2       	ldi	r24, 0x2B	; 43
+ d3a:	7e d9       	rcall	.-3332   	; 0x38 <enviaByte>
+ d3c:	87 ea       	ldi	r24, 0xA7	; 167
+ d3e:	91 e6       	ldi	r25, 0x61	; 97
+ d40:	01 97       	sbiw	r24, 0x01	; 1
+ d42:	f1 f7       	brne	.-4      	; 0xd40 <main+0x3f0>
+ d44:	00 c0       	rjmp	.+0      	; 0xd46 <main+0x3f6>
+ d46:	00 00       	nop
+ d48:	8b e2       	ldi	r24, 0x2B	; 43
+ d4a:	76 d9       	rcall	.-3348   	; 0x38 <enviaByte>
+ d4c:	87 ea       	ldi	r24, 0xA7	; 167
+ d4e:	91 e6       	ldi	r25, 0x61	; 97
+ d50:	01 97       	sbiw	r24, 0x01	; 1
+ d52:	f1 f7       	brne	.-4      	; 0xd50 <main+0x400>
+ d54:	00 c0       	rjmp	.+0      	; 0xd56 <main+0x406>
+ d56:	00 00       	nop
+ d58:	8a e5       	ldi	r24, 0x5A	; 90
+ d5a:	6e d9       	rcall	.-3364   	; 0x38 <enviaByte>
+ d5c:	9f e3       	ldi	r25, 0x3F	; 63
+ d5e:	2d e0       	ldi	r18, 0x0D	; 13
+ d60:	83 e0       	ldi	r24, 0x03	; 3
+ d62:	91 50       	subi	r25, 0x01	; 1
+ d64:	20 40       	sbci	r18, 0x00	; 0
+ d66:	80 40       	sbci	r24, 0x00	; 0
+ d68:	e1 f7       	brne	.-8      	; 0xd62 <main+0x412>
+ d6a:	00 c0       	rjmp	.+0      	; 0xd6c <main+0x41c>
+ d6c:	00 00       	nop
+ d6e:	83 e4       	ldi	r24, 0x43	; 67
+ d70:	63 d9       	rcall	.-3386   	; 0x38 <enviaByte>
+ d72:	87 ea       	ldi	r24, 0xA7	; 167
+ d74:	91 e6       	ldi	r25, 0x61	; 97
+ d76:	01 97       	sbiw	r24, 0x01	; 1
+ d78:	f1 f7       	brne	.-4      	; 0xd76 <main+0x426>
+ d7a:	00 c0       	rjmp	.+0      	; 0xd7c <main+0x42c>
+ d7c:	00 00       	nop
+ d7e:	81 e3       	ldi	r24, 0x31	; 49
+ d80:	5b d9       	rcall	.-3402   	; 0x38 <enviaByte>
+ d82:	87 ea       	ldi	r24, 0xA7	; 167
+ d84:	91 e6       	ldi	r25, 0x61	; 97
+ d86:	01 97       	sbiw	r24, 0x01	; 1
+ d88:	f1 f7       	brne	.-4      	; 0xd86 <main+0x436>
+ d8a:	00 c0       	rjmp	.+0      	; 0xd8c <main+0x43c>
+ d8c:	00 00       	nop
+ d8e:	86 e2       	ldi	r24, 0x26	; 38
+ d90:	53 d9       	rcall	.-3418   	; 0x38 <enviaByte>
+ d92:	87 ea       	ldi	r24, 0xA7	; 167
+ d94:	91 e6       	ldi	r25, 0x61	; 97
+ d96:	01 97       	sbiw	r24, 0x01	; 1
+ d98:	f1 f7       	brne	.-4      	; 0xd96 <main+0x446>
+ d9a:	00 c0       	rjmp	.+0      	; 0xd9c <main+0x44c>
+ d9c:	00 00       	nop
+ d9e:	86 e2       	ldi	r24, 0x26	; 38
+ da0:	4b d9       	rcall	.-3434   	; 0x38 <enviaByte>
+ da2:	87 ea       	ldi	r24, 0xA7	; 167
+ da4:	91 e6       	ldi	r25, 0x61	; 97
+ da6:	01 97       	sbiw	r24, 0x01	; 1
+ da8:	f1 f7       	brne	.-4      	; 0xda6 <main+0x456>
+ daa:	00 c0       	rjmp	.+0      	; 0xdac <main+0x45c>
+ dac:	00 00       	nop
+ dae:	8a e5       	ldi	r24, 0x5A	; 90
+ db0:	43 d9       	rcall	.-3450   	; 0x38 <enviaByte>
+ db2:	9f eb       	ldi	r25, 0xBF	; 191
+ db4:	27 e2       	ldi	r18, 0x27	; 39
+ db6:	89 e0       	ldi	r24, 0x09	; 9
+ db8:	91 50       	subi	r25, 0x01	; 1
+ dba:	20 40       	sbci	r18, 0x00	; 0
+ dbc:	80 40       	sbci	r24, 0x00	; 0
+ dbe:	e1 f7       	brne	.-8      	; 0xdb8 <main+0x468>
+ dc0:	00 c0       	rjmp	.+0      	; 0xdc2 <main+0x472>
+ dc2:	00 00       	nop
+ dc4:	17 ce       	rjmp	.-978    	; 0x9f4 <main+0xa4>
+
+00000dc6 <_exit>:
+ dc6:	f8 94       	cli
+
+00000dc8 <__stop_program>:
+ dc8:	ff cf       	rjmp	.-2      	; 0xdc8 <__stop_program>
