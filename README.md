@@ -13,7 +13,7 @@ This is a project of free time, just made for fun and to get better insight of m
 logic etc. Changes to the firmware will be updated at the simulation. ATmega8 works like a real keyboard
 microcontroller, so if you put keys into that circuit you can make a real keyboard and send key strokes to your PC.
 
-Some years ago I have read at a forum from this guy who was asking $500 bucks for implementing the ps/2 routine.
+Some years ago I have read at a forum from this guy who was asking $500 bucks for implementing the PS/2 routine.
 So there it is. For free.
 
 You can watch a demonstration at youtube https://www.youtube.com/watch?v=TApKBsTthDQ&t=3s
